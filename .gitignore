@@ -6,6 +6,7 @@ reated by https://www.gitignore.io/api/django,vim
 *.pyc
 __pycache__/
 local_settings.py
+secret.py
 db.sqlite3
 media
 

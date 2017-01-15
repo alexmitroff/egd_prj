@@ -11,9 +11,16 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+from .secret import *
+from django.utils.translation import ugettext_lazy as _
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+STAT_DIR = os.path.join(BASE_DIR, "static")
+STAT_ROOT = ''
+MEDI_DIR = os.path.join(BASE_DIR, "media")
+TEMPL_DIR = os.path.join(BASE_DIR, "templates")
+LOCAL_DIR = os.path.join(BASE_DIR, "locale")
 
 
 # Quick-start development settings - unsuitable for production
@@ -37,11 +44,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.flatpages',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -54,7 +66,7 @@ ROOT_URLCONF = 'egd_prj.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPL_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -75,8 +87,12 @@ WSGI_APPLICATION = 'egd_prj.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': DB_NAME,                      
+        'USER': DB_USER,
+        'PASSWORD': DB_PASSWD,
+        'HOST': DB_HOST,
+        'PORT': DB_PORT,
     }
 }
 
@@ -103,9 +119,14 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru'
 
-TIME_ZONE = 'UTC'
+LANGUAGES = [
+    ('ru', _('Russian')),
+    ('en', _('English')),
+]
+
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
@@ -118,3 +139,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (STAT_DIR,)
+STATIC_ROOT = STAT_ROOT
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = MEDI_DIR
