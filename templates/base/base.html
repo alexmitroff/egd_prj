@@ -1,0 +1,41 @@
+{% load staticfiles i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>{% block title %}{% endblock %} ИГД</title>
+    <link type="text/css" rel="stylesheet" href="{% static 'fonts/source-sans-pro/source-sans-pro.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'fonts/source-serif-pro/source-serif-pro.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'fonts/font-awesome/css/font-awesome.min.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'css/igd.css' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="content">
+                <div class="polytech-top">
+                    <div class="logo">
+                        <a href=#!><img src="{% static 'img/logo/polytech_logo.png' %}" alt="СПбПУ Петра Великого"></a>
+                    </div>
+                    <div class="top-content"></div>
+		        </div>
+                <div class="igd-top">
+                    <div class="logo">
+                        <a href=#!><img src="{% static 'img/logo/igd_logo.png' %}" alt="СПбПУ Петра Великого"></a>
+                    </div>
+                    <div class="top-content"></div>
+                </div>
+			</div>
+		</div>
+	</header>
+	<main>
+		<div class="container">
+            <div class="menu">{% include "include/menu.html" %}</div>
+            <div class="content">{% block content %}{% endblock %}</div>
+		</div>
+	</main>
+	<footer></footer>
+</body>
+</html>
