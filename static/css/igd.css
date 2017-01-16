@@ -93,15 +93,37 @@ a.link:hover {
       border-top: .1rem solid black;
       border-bottom: .1rem solid black; }
 
-.news .filter,
+.news .filters,
 .news .feed {
   display: block;
   position: relative;
   width: 100%; }
+.news .filters {
+  padding-top: 1rem; }
+  .news .filters form {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .news .filters form input {
+      display: none; }
+    .news .filters form label {
+      padding: .5rem;
+      background: none;
+      border: none;
+      border-top: 0.1rem solid #eee;
+      border-right: 0.1rem solid #eee;
+      border-bottom: 0.2rem solid #eee; }
+    .news .filters form label[for=c-all] {
+      border-left: 0.1rem solid #eee;
+      border-radius: .4rem 0 0 .4rem; }
+    .news .filters form label:last-child {
+      border-radius: 0 .4rem .4rem 0; }
+    .news .filters form input:checked + label {
+      background-color: #eee; }
 .news .feed {
+  display: flex;
   padding-left: 1rem;
   padding-top: 1rem;
-  display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   box-sizing: border-box; }

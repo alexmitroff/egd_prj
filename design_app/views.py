@@ -16,7 +16,8 @@ def index(request):
 
 def news(request):
     template = 'pages/news.html'
-    var = {}
+    categories = NewsCategory.objects.all()
+    var = {'categories':categories}
     return render(request, template, var)
 
 def feed(request):

@@ -3,7 +3,17 @@
 {% block title %}{% trans 'Новости' %} | {% endblock %}
 {% block content %}
     <div class="news">
-        <div class="filters"></div>
+        <div class="filters">
+            <form id="feed-filters">
+                <input id="c-all" type="radio" name="filter" value="all">
+                <label for="c-all">{% trans 'Все' %}</label>
+            {% for category in categories %}
+                <input id="c-{{category.id}}" type="radio" name="filter" value="{{category.id}}">
+                <label style="border-bottom-color:{{category.color}};" for="c-{{category.id}}">{{category.name_ru}}</label>
+            {% empty %}
+            {% endfor %}
+            </form>
+        </div>
         <div class="feed"></div>
     </div>
 {% endblock %}
@@ -18,4 +28,7 @@
 {% block docready %}
 		$.views.settings.delimiters("@%","%@");
         updateFeed();
+        $('input[type=radio]').change(function(){
+            updateFeed($(this).val());
+        });
 {% endblock %}

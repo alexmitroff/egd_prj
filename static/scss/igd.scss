@@ -9,6 +9,7 @@ $menuactive: #37b34a;
 $menuleftborder: #fff;
 $menuleftborderactive: #000;
 
+$borderlight: #eee;
 $textlight: #888;
 $textactive: #fff;
 $textlink: #bee1ff;
@@ -160,16 +161,47 @@ a.link:hover{
 }
 
 .news{
-	.filter,
+	.filters,
 	.feed{
 		display:block;
 		position:relative;
 		width:100%;
 	}
-	.feed{
+	.filters{
+        padding-top:1rem;
+        form{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            input{
+                display:none;
+            }
+            label{
+                padding:.5rem;
+                background:none;
+                border:none;
+                border-top:.1rem solid $borderlight;
+                border-right:.1rem solid $borderlight;
+                border-bottom:.2rem solid $borderlight;
+            }
+            
+            label[for=c-all]{
+                border-left:.1rem solid $borderlight;
+                border-radius:.4rem 0 0 .4rem;
+            }
+            label:last-child{
+                border-radius:0 .4rem .4rem 0;
+            }
+
+            input:checked + label{
+                background-color:#eee;
+            }
+        }
+    }
+    .feed{
+        display:flex;
 		padding-left: 1rem;
 		padding-top:1rem;
-		display:flex;
 		flex-wrap:wrap;
 		justify-content:flex-start;
         box-sizing: border-box;

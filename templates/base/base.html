@@ -51,8 +51,11 @@
             $('.feed').append(html);
         }
 
-        function updateFeed(){
+        function updateFeed(category){
             var data = {};
+            if(category !== 'all'){
+                data['category'] = category;
+            }
             $.getJSON("{% url 'feed' %}", data, function(json){
                 drawFeed(json);
             });
