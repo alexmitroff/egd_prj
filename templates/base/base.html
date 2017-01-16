@@ -5,7 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>{% block title %}{% endblock %} ИГД</title>
+    <meta name="title" content="{{ metatitle }}">
+    <meta name="description" content="{{ metadescription }}">
+    <meta name="keywords" content="{{ metakeywords }}">
+    <title>{% block title %}{% endblock %} {% trans 'ИГД' %}</title>
     <link type="text/css" rel="stylesheet" href="{% static 'fonts/source-sans-pro/source-sans-pro.css' %}">
     <link type="text/css" rel="stylesheet" href="{% static 'fonts/source-serif-pro/source-serif-pro.css' %}">
     <link type="text/css" rel="stylesheet" href="{% static 'fonts/font-awesome/css/font-awesome.min.css' %}">
@@ -37,5 +40,13 @@
 		</div>
 	</main>
 	<footer></footer>
+    {% block templates %}{% endblock %}
+    <script type="text/javascript" src="{% static 'js/jquery-3.1.1.min.js'  %}"></script>
+    {% block scripts %}{% endblock %}
+    <script type="text/javascript">
+        $('document').ready(function(){
+            {% block docready %}{% endblock %}
+        });
+    </script>
 </body>
 </html>

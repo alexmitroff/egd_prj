@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.flatpages',
+    'django.contrib.admindocs',
+    'design_app',
 ]
 
 SITE_ID = 1
@@ -125,6 +127,8 @@ LANGUAGES = [
     ('ru', _('Russian')),
     ('en', _('English')),
 ]
+
+LOCALE_PATHS = (LOCAL_DIR,)
 
 TIME_ZONE = 'Europe/Moscow'
 

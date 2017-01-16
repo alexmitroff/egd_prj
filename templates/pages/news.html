@@ -1,0 +1,16 @@
+{% extends 'base/base.html' %}
+{% load staticfiles i18n %}
+{% block title %}{% trans 'Новости' %} | {% endblock %}
+{% block content %}
+{% endblock %}
+{% block templates %}
+{% include "jsrender/news.html" %}
+{% endblock %}
+{% block scripts %}
+<script type="text/javascript" src="{% static 'js/jsrender.min.js' %}"></script>
+{% endblock %}
+{% block backscriptbody %}
+{% endblock %}
+{% block docready %}
+		$.views.settings.delimiters("@%","%@");
+{% endblock %}

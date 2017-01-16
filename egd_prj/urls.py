@@ -25,11 +25,13 @@ from design_app import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^i18n/', include('django.conf.urls.i18n')),
 ]
 
 urlpatterns += i18n_patterns(
     url(r'^$', views.index, name='index'),
+    url(r'^news/$', views.news, name='news'),
     )
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
