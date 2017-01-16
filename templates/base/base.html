@@ -44,6 +44,20 @@
     <script type="text/javascript" src="{% static 'js/jquery-3.1.1.min.js'  %}"></script>
     {% block scripts %}{% endblock %}
     <script type="text/javascript">
+        function drawFeed(json){
+            var tmpl = $.templates("#newsitem_template"),
+                html = tmpl.render(json); 
+            $('.feed').html('');
+            $('.feed').append(html);
+        }
+
+        function updateFeed(){
+            var data = {};
+            $.getJSON("{% url 'feed' %}", data, function(json){
+                drawFeed(json);
+            });
+        }
+    {% block backscriptbody %}{% endblock %}
         $('document').ready(function(){
             {% block docready %}{% endblock %}
         });

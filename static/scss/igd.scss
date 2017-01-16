@@ -171,9 +171,11 @@ a.link:hover{
 		padding-top:1rem;
 		display:flex;
 		flex-wrap:wrap;
-		justify-content:space-between;
+		justify-content:flex-start;
+        box-sizing: border-box;
 		.feed-item{
-			flex-basis:33%;
+			flex-basis:30%;
+            margin-right:3%;
 			.feed-item-rubric{
 				padding:.5rem;
 				border-top:.2rem solid #ccc;
@@ -186,12 +188,18 @@ a.link:hover{
 				border-top:.1rem solid #eee;
 				font-family: $serif;
 				padding-top:1rem;
+				color:$fontcolor;
 			}
 			.feed-item-date{
 				padding:.5rem;
 				color:$textlight;
 			}
-			.feed-item-description{}
+			.feed-item-description{
+                overflow:hidden;
+                text-overflow: ellipsis;
+                height:10rem;
+                color:$textlight;
+            }
 		}
 	}
 }

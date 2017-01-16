@@ -2,6 +2,10 @@
 {% load staticfiles i18n %}
 {% block title %}{% trans 'Новости' %} | {% endblock %}
 {% block content %}
+    <div class="news">
+        <div class="filters"></div>
+        <div class="feed"></div>
+    </div>
 {% endblock %}
 {% block templates %}
 {% include "jsrender/news.html" %}
@@ -13,4 +17,5 @@
 {% endblock %}
 {% block docready %}
 		$.views.settings.delimiters("@%","%@");
+        updateFeed();
 {% endblock %}
