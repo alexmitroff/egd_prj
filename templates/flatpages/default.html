@@ -1,0 +1,9 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+{% block title %}{{flatpage.title}} | {% endblock %}
+{% block content %}
+    <div class="flatcontent">{{flatpage.content}}</div>
+{% endblock %}
+{% block templates %}{% endblock %}
+{% block scripts %}{% endblock %}
+{% block docready %}{% endblock %}

@@ -2,10 +2,21 @@
 {% load staticfiles i18n %}
 {% block title %}{% trans 'Новости' %} | {% endblock %}
 {% block content %}
+    <div class="slick" id="featured">
+        <div class="default">
+            <div class="slide">
+                <div class="description">
+                    <h2>Экодизайн 2017</h2>
+                    <p>Все что вы хотели, но боялись спросить у японцев в России.</p>
+                    <p><a class="link" href=#!>Подробнее <i class="fa fa-arrow-right" aria-hidden="true"></i></a></p>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="news">
         <div class="filters">
             <form id="feed-filters">
-                <input id="c-all" type="radio" name="filter" value="all">
+                <input id="c-all" type="radio" name="filter" value="all" checked>
                 <label for="c-all">{% trans 'Все' %}</label>
             {% for category in categories %}
                 <input id="c-{{category.id}}" type="radio" name="filter" value="{{category.id}}">
@@ -22,6 +33,7 @@
 {% endblock %}
 {% block scripts %}
 <script type="text/javascript" src="{% static 'js/jsrender.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'slick/slick.min.js' %}"></script>
 {% endblock %}
 {% block backscriptbody %}
 {% endblock %}
@@ -31,4 +43,5 @@
         $('input[type=radio]').change(function(){
             updateFeed($(this).val());
         });
+        $('.slick').slick();
 {% endblock %}

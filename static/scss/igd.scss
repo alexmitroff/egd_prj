@@ -14,6 +14,8 @@ $textlight: #888;
 $textactive: #fff;
 $textlink: #bee1ff;
 
+$green: rgba(56,178,76,.75);
+
 $bodybackground: #eee;
 $contentbackground: white;
 
@@ -48,15 +50,19 @@ html {
 
 body{
 	display:flex;
+    min-height:100vh;
 	flex-direction:column;
 	background-color: $bodybackground;
 }
 
 header,
 main {
-	flex-grow: 1;
 	display:flex;
 	justify-content: center;
+}
+
+main{
+	flex-grow: 1;
 }
 
 header, main, footer {
@@ -134,7 +140,7 @@ a.link:hover{
 	}
 	
 	.content {
-		flex-grow:1;
+		flex-basis:75%;
 		.igd-top,
 		.polytech-top{
 			display:flex;
@@ -200,16 +206,15 @@ a.link:hover{
     }
     .feed{
         display:flex;
-		padding-left: 1rem;
-		padding-top:1rem;
+		padding: 1rem;
 		flex-wrap:wrap;
-		justify-content:flex-start;
+		justify-content:space-between;
         box-sizing: border-box;
 		.feed-item{
 			flex-basis:30%;
-            margin-right:3%;
+			padding:.5rem;
 			.feed-item-rubric{
-				padding:.5rem;
+			    padding:.5rem;
 				border-top:.2rem solid #ccc;
 				p{
 					text-transform:uppercase;
@@ -234,6 +239,40 @@ a.link:hover{
             }
 		}
 	}
+}
+
+.slick {
+    div{
+        background-size:cover;
+        background-position:center;
+        display:block;
+        height:30rem;
+        .slide{
+            display:flex;
+            justify-content:flex-end;
+            .description {
+                padding:1rem;
+                background-color:$green;
+                flex-basis:33%;
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+                color:white;
+                p{
+                    font-size:1.2rem;
+                    text-align:center;
+                }
+            }
+        }
+    }
+    .default{
+        background-image:url(../img/default/default.jpg);
+    }
+}
+
+.flatcontent{
+    padding:1rem;
 }
 
 @media (min-width:$min-mobileh) and (max-width:$max-mobileh) {}

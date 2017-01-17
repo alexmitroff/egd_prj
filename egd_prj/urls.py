@@ -23,6 +23,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^i18n/', include('django.conf.urls.i18n')),
+    url(r'^ru/contacts/$', fp_views.flatpage, {'url': '/ru/contacts/'}, name='contacts_ru'),
+    url(r'^en/contacts/$', fp_views.flatpage, {'url': '/en/contacts/'}, name='contacts_en'),
     url(r'^api/', include(api_patterns)),
 ]
 

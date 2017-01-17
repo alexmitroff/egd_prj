@@ -11,14 +11,17 @@ html {
 
 body {
   display: flex;
+  min-height: 100vh;
   flex-direction: column;
   background-color: #eee; }
 
 header,
 main {
-  flex-grow: 1;
   display: flex;
   justify-content: center; }
+
+main {
+  flex-grow: 1; }
 
 header, main, footer {
   width: 100%; }
@@ -75,7 +78,7 @@ a.link:hover {
         background-color: #37b34a;
         color: #fff; }
   .container .content {
-    flex-grow: 1; }
+    flex-basis: 75%; }
     .container .content .igd-top,
     .container .content .polytech-top {
       display: flex;
@@ -122,14 +125,13 @@ a.link:hover {
       background-color: #eee; }
 .news .feed {
   display: flex;
-  padding-left: 1rem;
-  padding-top: 1rem;
+  padding: 1rem;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: space-between;
   box-sizing: border-box; }
   .news .feed .feed-item {
     flex-basis: 30%;
-    margin-right: 3%; }
+    padding: .5rem; }
     .news .feed .feed-item .feed-item-rubric {
       padding: .5rem;
       border-top: .2rem solid #ccc; }
@@ -149,6 +151,32 @@ a.link:hover {
       text-overflow: ellipsis;
       height: 10rem;
       color: #888; }
+
+.slick div {
+  background-size: cover;
+  background-position: center;
+  display: block;
+  height: 30rem; }
+  .slick div .slide {
+    display: flex;
+    justify-content: flex-end; }
+    .slick div .slide .description {
+      padding: 1rem;
+      background-color: rgba(56, 178, 76, 0.75);
+      flex-basis: 33%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white; }
+      .slick div .slide .description p {
+        font-size: 1.2rem;
+        text-align: center; }
+.slick .default {
+  background-image: url(../img/default/default.jpg); }
+
+.flatcontent {
+  padding: 1rem; }
 
 @media (min-width: 920px) and (max-width: 1199px) {
   .container .menu {
