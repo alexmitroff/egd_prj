@@ -1,0 +1,29 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+{% block title %}{{ degree.name_ru }} | {% endblock %}
+{% block content %}
+<div class="page-title">
+    <h1>{{ degree.name_ru }}</h1>
+</div>
+<div class="flex-block">
+    {% for programm in degree.programm_set.all %}
+    <div class="flex-block-card" style="border-bottom-color:{{programm.color}}">
+        <div class="title-pic-place">
+            <div class="title-pic" style="background-image:url({{ degree.pic.url }})">
+            </div>
+        </div>
+        <div class="title-content">    
+            <h3>{{programm.name_ru}}</h3>
+            <p class="short">{{programm.short_ru}}</p>
+        </div>
+        <div class="title-actions">
+            <p><a href="{% url 'programm' degree.slug programm.slug %}" class="link">{% trans 'Подробнее' %} <i class="fa fa-arrow-right" aria-hidden="true"></i></a></p>
+        </div>
+    </div>
+    {% empty %}
+    {% endfor %}
+</div>
+{% endblock %}
+{% block templates %}{% endblock %}
+{% block scripts %}{% endblock %}
+{% block docready %}{% endblock %}

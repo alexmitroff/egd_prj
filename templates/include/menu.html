@@ -1,33 +1,35 @@
 {% load i18n %}
+{% url 'degree' 'bachelor' as url_bachelor %}
+{% url 'degree' 'masters' as url_masters %}
 {% with request.resolver_match.url_name as url_name %}
 <nav>
     <ul>
-        <li class="{% if url_name == 'index' %}active{% endif %}">
-            <a href="{% url 'index' %}">
-                <span>{% trans 'О кафедре' %}</span>
-                <span><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
-            </a>
-        </li>
         <li class="{% if url_name == 'news' %}active{% endif %}">
             <a href="{% url 'news' %}">
                 <span>{% trans 'Новости' %}</span>
                 <span><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
             </a>
         </li>
-        <li class="{% if url_name == 'apply' %}active{% endif %}">
-            <a href=#!>
+        <li class="{% if url_name == 'about_ru' or url_name == 'about_en' %}active{% endif %}">
+            <a href="{% if LANGUAGE_CODE == 'ru' %}{% url 'about_ru' %}{% else %}{% url 'about_en' %}{% endif %}">
+                <span>{% trans 'О кафедре' %}</span>
+                <span><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+            </a>
+        </li>
+        <li class="{% if url_name == 'applicants' %}active{% endif %}">
+            <a href="{% url 'applicants'  %}">
                 <span>{% trans 'Абитуриентам' %}</span>
                 <span><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
             </a>
         </li>
-        <li class="{% if url_name == 'bachelors' %}active{% endif %}">
-            <a href=#!>
+        <li class="{% if request.path == url_bachelor %}active{% endif %}">
+            <a href="{% url 'degree' 'bachelor' %}">
                 <span>{% trans 'Бакалавриат' %}</span>
                 <span><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
             </a>
         </li>
-        <li class="{% if url_name == 'masters' %}active{% endif %}">
-            <a href=#!>
+        <li class="{% if request.path == url_masters %}active{% endif %}">
+            <a href="{% url 'degree' 'masters' %}">
                 <span>{% trans 'Магистратура' %}</span>
                 <span><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
             </a>

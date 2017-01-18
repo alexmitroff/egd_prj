@@ -27,12 +27,12 @@ LOCAL_DIR = os.path.join(BASE_DIR, "locale")
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '91#&mnn2_^kqte@9z=trjdv%knx)oko6ytvik_0z27r59s$tp3'
+SECRET_KEY = DJ_SECRET
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = DJ_HOSTS
 
 
 # Application definition

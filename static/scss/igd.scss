@@ -3,7 +3,7 @@ $sans: Source Sans Pro;
 
 $fontcolor: #444;
 $acolor: #0088cc;
-
+$flexcardcolor: #eee;
 $menubottom: #ccc;
 $menuactive: #37b34a;
 $menuleftborder: #fff;
@@ -34,6 +34,13 @@ $container-tablet: $container-mobile;
 $container-desktop: 1200px;
 
 
+a{
+-webkit-transition: all 0.3s ease-out 0s;
+-moz-transition: all 0.3s ease-out 0s;
+-o-transition: all 0.3s ease-out 0s;
+transition: all 0.3s ease-out 0s;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -55,14 +62,31 @@ body{
 	background-color: $bodybackground;
 }
 
+.header-egd{
+    padding-top:5rem;
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:top center;
+    background-image:url(../img/default/poly.png);
+    height:20rem;
+    svg{
+        border-left:1rem solid black;
+    }
+}
+
 header,
 main {
 	display:flex;
 	justify-content: center;
 }
 
+header{
+    flex-direction:column;
+}
+
 main{
 	flex-grow: 1;
+    margin-top:-2rem;
 }
 
 header, main, footer {
@@ -88,8 +112,6 @@ a.link:hover{
 .container{
 	display:flex;
 	flex-grow:1;
-	background-color: $contentbackground;
-	
 	
 	.menu {
 		flex-basis: 25%;
@@ -109,6 +131,7 @@ a.link:hover{
 						justify-content:space-between;
 						align-items:center;	
 						border-left:1rem solid $menuleftborder;
+                        background-color: $menuleftborder;
 					}
 
                     #language input[type=submit]{
@@ -117,6 +140,7 @@ a.link:hover{
                         padding:1rem;
                         margin:0;
 						border-left:1rem solid $menuleftborder;
+                        background-color: $menuleftborder;
                         cursor:pointer;
                         width:100%;
                         text-align:left;
@@ -140,11 +164,14 @@ a.link:hover{
 	}
 	
 	.content {
-		flex-basis:75%;
+        margin-left:1rem;
+		flex-basis:70%;
+        height:100%;
+        background:white;
 		.igd-top,
 		.polytech-top{
 			display:flex;
-			padding:2rem 1rem 2rem 1rem;
+			padding:1rem 1rem 1rem 1rem;
 			.logo{
 				flex-basis:25%;
 				a {
@@ -166,6 +193,19 @@ a.link:hover{
 	}
 }
 
+header{
+    .header-poly,
+    .header-egd{
+        display:flex;
+        justify-content:center;
+        .content{
+            flex-basis:$container-desktop;
+        }
+    }
+    .header-egd{
+    }
+}
+
 .news{
 	.filters,
 	.feed{
@@ -183,6 +223,7 @@ a.link:hover{
                 display:none;
             }
             label{
+                cursor:pointer;
                 padding:.5rem;
                 background:none;
                 border:none;
@@ -271,8 +312,77 @@ a.link:hover{
     }
 }
 
+.units,
+.page-title,
+.flex-block,
 .flatcontent{
     padding:1rem;
+}
+
+$unitborder: .1rem solid black;
+
+.units h2{
+    padding:1rem 0 1rem 0;
+    border-top: $unitborder;
+    margin-bottom:1rem;
+}
+
+.units h2 + div{
+    margin-bottom:4rem;
+}
+
+$flexborder: .5rem solid #fff;
+
+.flex-block{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    .flex-block-card{
+        margin-bottom:1rem;
+        width:32%;
+        box-sizing: border-box;
+        display:flex;
+        flex-direction:column;
+        justify-content:space-between;
+        background-color:$flexcardcolor;
+        border:.3rem solid $flexcardcolor;
+        .title-pic-place{
+            width:100%;
+            .title-pic{
+                padding-top:100%;
+                background-size:cover;
+                background-position:center;
+                display:block;
+            }
+        }
+        .title-content{
+            flex-grow:1;
+            padding:1rem;
+            h3 {
+                margin-bottom:1rem;
+            }
+        }
+        .title-actions{
+            padding: 0 1rem 1rem 1rem;
+        }
+    }
+}
+
+.programm{
+    display:flex;
+    padding:1rem;
+    .info{
+       padding:1rem;
+       width:70%; 
+    }
+    .summary{
+        width:30%;
+        .summary-content{
+            border-top:.3rem solid $flexcardcolor;
+            background-color:#eee;
+            padding:1rem; 
+        }
+    }
 }
 
 @media (min-width:$min-mobileh) and (max-width:$max-mobileh) {}

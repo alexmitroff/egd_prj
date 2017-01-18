@@ -18,22 +18,22 @@
 </head>
 <body>
     <header>
-        <div class="container">
+        <div class="header-poly">
             <div class="content">
-                <div class="polytech-top">
                     <div class="logo">
                         <a href=#!><img src="{% static 'img/logo/polytech_logo.png' %}" alt="СПбПУ Петра Великого"></a>
                     </div>
                     <div class="top-content"></div>
-		        </div>
-                <div class="igd-top">
+            </div>    
+        </div>
+        <div class="header-egd">
+            <div class="content">
                     <div class="logo">
-                        <a href=#!><img src="{% static 'img/logo/igd_logo.png' %}" alt="СПбПУ Петра Великого"></a>
+                        {% include 'include/logo.html' %}
                     </div>
                     <div class="top-content"></div>
-                </div>
-			</div>
-		</div>
+            </div>    
+        </div>    
 	</header>
 	<main>
 		<div class="container">

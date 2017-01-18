@@ -1,0 +1,34 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+{% block title %}{{ programm.name_ru }} | {{degree.name_ru}}  | {% endblock %}
+{% block content %}
+<div class="page-title">
+    <h1>{{degree.name_ru}}: {{ programm.name_ru }}</h1>
+</div>
+<div class="programm">
+    <div class="info">
+        <div>{{programm.content_ru|safe}}</div>
+        <div class="drop">
+            <h3>{% trans "Изучаемые предматы" %}</h3>
+            <div>{{programm.courses_ru|safe}}</div>
+        </div>
+        <div class="drop">
+            <h3>{% trans "Международной сотрудничество" %}</h3>
+            <div>{{programm.inter_ru|safe}}</div>
+        </div>
+        <div class="drop">
+            <h3>{% trans "Техническое оснащение обучения" %}</h3>
+            <div>{{programm.tech_ru|safe}}</div>
+        </div>
+    </div>
+    <div class="summary">
+        <div class="summary-content" style="border-top-color:{{programm.color}}">
+            <h3>{% trans "Краткая информация" %}</h3>
+            {{programm.summary_ru|safe}}
+        </div>
+    </div>    
+</div>
+{% endblock %}
+{% block templates %}{% endblock %}
+{% block scripts %}{% endblock %}
+{% block docready %}{% endblock %}

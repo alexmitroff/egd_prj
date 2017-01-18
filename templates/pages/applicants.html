@@ -1,0 +1,38 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Абитуриентам' %} | {% endblock %}
+{% block content %}
+<div class="page-title">
+    <h1>{% trans 'Абитуриентам' %}</h1>
+</div>
+<div class="flex-block">
+    {% for degree in degrees %}
+    <div class="flex-block-card">
+        <div class="title-pic-place">
+            <div class="title-pic" style="background-image:url({{ degree.pic.url }})">
+            </div>
+        </div>
+        <div class="title-content">    
+            <h3>{{degree.name_ru}}</h3>
+            <p>{{degree.content_ru}}</p>
+        </div>
+        <div class="title-actions">
+            <p><a href="{% url 'degree' degree.slug %}" class="link">{% trans 'Подробнее' %} <i class="fa fa-arrow-right" aria-hidden="true"></i></a></p>
+        </div>
+    </div>
+    {% empty %}
+    {% endfor %}
+</div>
+<div class="units">
+    {% for unit in units %}
+    <h2>{{unit.name_ru}}</h2>
+    <div>
+    {{unit.content_ru|safe}}
+    </div>
+    {% empty %}
+    {% endfor %}
+</div>
+{% endblock %}
+{% block templates %}{% endblock %}
+{% block scripts %}{% endblock %}
+{% block docready %}{% endblock %}

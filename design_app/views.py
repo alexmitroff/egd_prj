@@ -1,4 +1,6 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 from egd_prj import settings
 from django.http import JsonResponse
 
@@ -38,3 +40,25 @@ def feed(request):
             'short': item.content_en} for item in news]
 
     return JsonResponse(data, safe=False)
+
+def applicants(request):
+    template = 'pages/applicants.html'
+    degrees = Degree.objects.filter(show=True)
+    units = Unit.objects.filter(tag__word='apply')
+    var = {'degrees':degrees,
+           'units':units}
+    return render(request, template, var)
+
+def degree(request, d_slug):
+    template = 'pages/degree.html'
+    degree = get_object_or_404(Degree, slug=d_slug)
+    var = {'degree':degree}
+    return render(request, template, var)
+
+def programm(request,d_slug, p_slug):
+    template = 'pages/programm.html'
+    degree = get_object_or_404(Degree, slug=d_slug)
+    programm = get_object_or_404(Programm, slug=p_slug)
+    var = { 'degree':degree,
+            'programm':programm}
+    return render(request, template, var)
