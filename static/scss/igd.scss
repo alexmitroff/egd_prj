@@ -71,6 +71,7 @@ body{
     height:20rem;
     svg{
         border-left:1rem solid black;
+        width:40rem;
     }
 }
 
@@ -244,6 +245,9 @@ header{
         .content{
             flex-basis:$container-desktop;
         }
+    }
+    .header-poly{
+        padding:1rem;
     }
     .header-egd{
     }

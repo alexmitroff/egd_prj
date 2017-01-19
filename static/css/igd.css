@@ -29,7 +29,8 @@ body {
   background-image: url(../img/default/poly.png);
   height: 20rem; }
   .header-egd svg {
-    border-left: 1rem solid black; }
+    border-left: 1rem solid black;
+    width: 40rem; }
 
 .flatpicture {
   background-repeat: no-repeat;
@@ -163,6 +164,8 @@ header .header-egd {
   header .header-poly .content,
   header .header-egd .content {
     flex-basis: 1200px; }
+header .header-poly {
+  padding: 1rem; }
 
 .news .filters,
 .news .feed {
