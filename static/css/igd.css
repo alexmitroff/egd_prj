@@ -31,6 +31,13 @@ body {
   .header-egd svg {
     border-left: 1rem solid black; }
 
+.flatpicture {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 20rem;
+  margin-bottom: 2rem; }
+
 header,
 main {
   display: flex;
@@ -41,10 +48,39 @@ header {
 
 main {
   flex-grow: 1;
-  margin-top: -2rem; }
+  margin-top: -2rem;
+  padding-bottom: 1rem; }
 
 header, main, footer {
   width: 100%; }
+
+footer {
+  padding-top: 1rem;
+  background-color: #37b34a;
+  min-height: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; }
+  footer .footer-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center; }
+    footer .footer-container .footer-content {
+      width: 1200px;
+      display: flex; }
+      footer .footer-container .footer-content .address,
+      footer .footer-container .footer-content .cumulus {
+        color: white;
+        width: 30%; }
+        footer .footer-container .footer-content .address ul,
+        footer .footer-container .footer-content .cumulus ul {
+          list-style: none; }
+  footer .copy {
+    padding: .5rem;
+    background-color: rgba(0, 0, 0, 0.5); }
+    footer .copy p {
+      color: white;
+      text-align: center; }
 
 a {
   text-decoration: none;
@@ -52,12 +88,12 @@ a {
 
 a.link {
   color: #444;
-  box-shadow: inset 0 -0.3rem 0 #bee1ff;
-  border-bottom: 0.1rem solid #bee1ff;
+  box-shadow: inset 0 -0.3rem 0 #37b34a;
+  border-bottom: 0.1rem solid #37b34a;
   transition: all 0.3s cubic-bezier(0.79, 0.4, 0.32, 1.84); }
 
 a.link:hover {
-  box-shadow: inset 0 -1em 0 #bee1ff; }
+  box-shadow: inset 0 -1em 0 #37b34a; }
 
 .container {
   display: flex;
@@ -210,6 +246,7 @@ header .header-egd {
 
 .units,
 .page-title,
+.form-title,
 .flex-block,
 .flatcontent {
   padding: 1rem; }
@@ -226,29 +263,32 @@ header .header-egd {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between; }
-  .flex-block .flex-block-card {
+  .flex-block .flex-card {
     margin-bottom: 1rem;
     width: 32%;
+    padding: .3rem;
     box-sizing: border-box;
+    border-bottom: 0.3rem solid #ccc;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: #eee;
-    border: 0.3rem solid #eee; }
-    .flex-block .flex-block-card .title-pic-place {
+    background-color: #ccc; }
+    .flex-block .flex-card .title-pic-place {
       width: 100%; }
-      .flex-block .flex-block-card .title-pic-place .title-pic {
+      .flex-block .flex-card .title-pic-place .title-pic {
         padding-top: 100%;
         background-size: cover;
         background-position: center;
         display: block; }
-    .flex-block .flex-block-card .title-content {
+    .flex-block .flex-card .title-content {
       flex-grow: 1;
-      padding: 1rem; }
-      .flex-block .flex-block-card .title-content h3 {
+      padding: 1rem;
+      color: white; }
+      .flex-block .flex-card .title-content h3 {
         margin-bottom: 1rem; }
-    .flex-block .flex-block-card .title-actions {
-      padding: 0 1rem 1rem 1rem; }
+    .flex-block .flex-card .title-actions {
+      padding: 1rem 1rem 2rem 1rem;
+      text-align: center; }
 
 .programm {
   display: flex;
@@ -259,9 +299,44 @@ header .header-egd {
   .programm .summary {
     width: 30%; }
     .programm .summary .summary-content {
-      border-top: 0.3rem solid #eee;
+      border-top: 0.3rem solid #ccc;
       background-color: #eee;
       padding: 1rem; }
+
+a.btn {
+  padding: .5rem;
+  border-radius: .4rem;
+  color: #ccc; }
+
+a.btn-white {
+  background-color: rgba(255, 255, 255, 0.8); }
+
+a.btn-white:hover {
+  background-color: white; }
+
+.drop {
+  border-top: 0.2rem solid #ccc;
+  border-bottom: 0.2rem solid #ccc;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-top: 1rem; }
+  .drop h3 {
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between; }
+  .drop h3 + div,
+  .drop i {
+    -webkit-transition: all 0.3s ease-out 0s;
+    -moz-transition: all 0.3s ease-out 0s;
+    -o-transition: all 0.3s ease-out 0s;
+    transition: all 0.3s ease-out 0s; }
+  .drop h3.collapsed {
+    padding-bottom: 0; }
+  .drop h3.collapsed + div {
+    overflow: hidden;
+    height: 0; }
 
 @media (min-width: 920px) and (max-width: 1199px) {
   .container .menu {

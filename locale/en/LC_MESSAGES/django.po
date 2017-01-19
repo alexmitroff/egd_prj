@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-16 00:26+0300\n"
+"POT-Creation-Date: 2017-01-19 22:40+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,54 +17,340 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: egd_prj/settings.py:125
+#: design_app/admin.py:19
+#, fuzzy
+#| msgid "Russian"
+msgid "Russian locale"
+msgstr "Russian"
+
+#: design_app/admin.py:21
+#, fuzzy
+#| msgid "English"
+msgid "English locale"
+msgstr "English"
+
+#: design_app/models.py:14 design_app/models.py:15 design_app/models.py:59
+#: design_app/models.py:60 design_app/models.py:115 design_app/models.py:116
+#: design_app/models.py:181 design_app/models.py:182 design_app/models.py:238
+#: design_app/models.py:239
+msgid "Name in english"
+msgstr ""
+
+#: design_app/models.py:17 design_app/models.py:18 design_app/models.py:64
+#: design_app/models.py:65 design_app/models.py:130 design_app/models.py:131
+#: design_app/models.py:186 design_app/models.py:187 design_app/models.py:241
+#: design_app/models.py:242
+msgid "Name in russian"
+msgstr ""
+
+#: design_app/models.py:19
+msgid "Category  color"
+msgstr ""
+
+#: design_app/models.py:20 design_app/models.py:111
+msgid "HEX number with # like #8f5642"
+msgstr ""
+
+#: design_app/models.py:22
+msgid "News category"
+msgstr ""
+
+#: design_app/models.py:23
+msgid "News categories"
+msgstr ""
+
+#: design_app/models.py:30 design_app/models.py:31
+msgid "Title in english"
+msgstr ""
+
+#: design_app/models.py:32 design_app/models.py:61 design_app/models.py:119
+#: design_app/models.py:183
+msgid "Content in english"
+msgstr ""
+
+#: design_app/models.py:33 design_app/models.py:38 design_app/models.py:62
+#: design_app/models.py:67 design_app/models.py:120 design_app/models.py:122
+#: design_app/models.py:124 design_app/models.py:126 design_app/models.py:128
+#: design_app/models.py:135 design_app/models.py:137 design_app/models.py:139
+#: design_app/models.py:141 design_app/models.py:143 design_app/models.py:184
+#: design_app/models.py:189
+msgid "use HTML for better result"
+msgstr ""
+
+#: design_app/models.py:35 design_app/models.py:36
+msgid "Title in russian"
+msgstr ""
+
+#: design_app/models.py:37 design_app/models.py:66 design_app/models.py:134
+#: design_app/models.py:188
+msgid "Content in russian"
+msgstr ""
+
+#: design_app/models.py:40 design_app/models.py:207
+msgid "Created"
+msgstr ""
+
+#: design_app/models.py:41 design_app/models.py:208
+msgid "Modified"
+msgstr ""
+
+#: design_app/models.py:42
+msgid "Published"
+msgstr ""
+
+#: design_app/models.py:44
+msgid "News item"
+msgstr ""
+
+#: design_app/models.py:45
+msgid "News items"
+msgstr ""
+
+#: design_app/models.py:54 design_app/models.py:104 design_app/models.py:177
+#: design_app/models.py:234
+msgid "Position"
+msgstr ""
+
+#: design_app/models.py:55 design_app/models.py:105 design_app/models.py:178
+#: design_app/models.py:235
+msgid "Show"
+msgstr ""
+
+#: design_app/models.py:56 design_app/models.py:112
+msgid "URL"
+msgstr ""
+
+#: design_app/models.py:57 design_app/models.py:113
+msgid "it will shows up in address area"
+msgstr ""
+
+#: design_app/models.py:80
+msgid "Degree"
+msgstr ""
+
+#: design_app/models.py:81
+msgid "Degrees"
+msgstr ""
+
+#: design_app/models.py:100
+msgid "intramural"
+msgstr ""
+
+#: design_app/models.py:101
+msgid "extramural"
+msgstr ""
+
+#: design_app/models.py:102
+msgid "evening classes"
+msgstr ""
+
+#: design_app/models.py:107
+msgid "Form"
+msgstr ""
+
+#: design_app/models.py:108
+msgid "Duration"
+msgstr ""
+
+#: design_app/models.py:109
+msgid "in years"
+msgstr ""
+
+#: design_app/models.py:110
+msgid "Programm  color"
+msgstr ""
+
+#: design_app/models.py:117
+msgid "Short in english"
+msgstr ""
+
+#: design_app/models.py:118 design_app/models.py:133
+msgid "140 symbols"
+msgstr ""
+
+#: design_app/models.py:121
+msgid "Summary in english"
+msgstr ""
+
+#: design_app/models.py:123
+msgid "Courses in english"
+msgstr ""
+
+#: design_app/models.py:125
+msgid "International in english"
+msgstr ""
+
+#: design_app/models.py:127
+msgid "Tech in english"
+msgstr ""
+
+#: design_app/models.py:132
+msgid "Short in russian"
+msgstr ""
+
+#: design_app/models.py:136
+msgid "Summary in russian"
+msgstr ""
+
+#: design_app/models.py:138
+msgid "Courses in russian"
+msgstr ""
+
+#: design_app/models.py:140
+msgid "International in russian"
+msgstr ""
+
+#: design_app/models.py:142
+msgid "Tech in russian"
+msgstr ""
+
+#: design_app/models.py:158
+msgid "Programm"
+msgstr ""
+
+#: design_app/models.py:159
+msgid "Programmes"
+msgstr ""
+
+#: design_app/models.py:165
+msgid "Word"
+msgstr ""
+
+#: design_app/models.py:168
+msgid "Tag"
+msgstr ""
+
+#: design_app/models.py:169
+msgid "Tags"
+msgstr ""
+
+#: design_app/models.py:191
+msgid "Unit"
+msgstr ""
+
+#: design_app/models.py:192
+msgid "Units"
+msgstr ""
+
+#: design_app/models.py:220
+msgid "Flat image"
+msgstr ""
+
+#: design_app/models.py:221
+msgid "Flat images"
+msgstr ""
+
+#: design_app/models.py:255
+msgid "Document"
+msgstr ""
+
+#: design_app/models.py:256
+msgid "Documents"
+msgstr ""
+
+#: egd_prj/settings.py:127
 msgid "Russian"
 msgstr "Russian"
 
-#: egd_prj/settings.py:126
+#: egd_prj/settings.py:128
 msgid "English"
 msgstr "English"
 
-#: templates/base/base.html:8
+#: templates/base/base.html:11
 msgid "ИГД"
 msgstr "EGD"
 
-#: templates/include/menu.html:4
-msgid "О кафедре"
-msgstr "About department"
+#: templates/include/flex-card.html:12 templates/pages/applicants.html:20
+msgid "Подробнее"
+msgstr "More"
 
-#: templates/include/menu.html:5
+#: templates/include/menu.html:9 templates/pages/news.html:3
 msgid "Новости"
 msgstr "News"
 
-#: templates/include/menu.html:6
+#: templates/include/menu.html:15
+msgid "О кафедре"
+msgstr "About department"
+
+#: templates/include/menu.html:21 templates/pages/applicants.html:3
+#: templates/pages/applicants.html:6
 msgid "Абитуриентам"
 msgstr "Applicants"
 
-#: templates/include/menu.html:7
+#: templates/include/menu.html:27
 msgid "Бакалавриат"
 msgstr "Bachelor's degree programmes"
 
-#: templates/include/menu.html:8
+#: templates/include/menu.html:33
 msgid "Магистратура"
 msgstr "Master's degree programmes"
 
-#: templates/include/menu.html:9
+#: templates/include/menu.html:39
 msgid "Аспирантура"
 msgstr "Doctoral programmes"
 
-#: templates/include/menu.html:10
+#: templates/include/menu.html:45
 msgid "Научная деятельность"
 msgstr "Science and research"
 
-#: templates/include/menu.html:11
-msgid "Международная деятельность"
-msgstr "International activities"
-
-#: templates/include/menu.html:12
+#: templates/include/menu.html:51
 msgid "Лаборатории"
 msgstr "Labs"
 
-#: templates/include/menu.html:13
+#: templates/include/menu.html:57
+msgid "Международная деятельность"
+msgstr "International activities"
+
+#: templates/include/menu.html:63
+msgid "ЭкоДизайн"
+msgstr "EcoDesign"
+
+#: templates/include/menu.html:69
 msgid "Контакты"
 msgstr "Contacts"
+
+#: templates/pages/degree.html:9
+msgid "Очная форма"
+msgstr ""
+
+#: templates/pages/degree.html:15
+msgid "Нет очных программ."
+msgstr ""
+
+#: templates/pages/degree.html:19
+msgid "Очная-заочная форма"
+msgstr ""
+
+#: templates/pages/degree.html:25
+msgid "Нет очно-заочных программ."
+msgstr ""
+
+#: templates/pages/degree.html:29
+msgid "Заочная форма"
+msgstr ""
+
+#: templates/pages/degree.html:35
+msgid "Нет заочных программ."
+msgstr ""
+
+#: templates/pages/news.html:21
+msgid "Все"
+msgstr ""
+
+#: templates/pages/programm.html:13
+msgid "Изучаемые предметы"
+msgstr ""
+
+#: templates/pages/programm.html:20
+#, fuzzy
+#| msgid "Международная деятельность"
+msgid "Международноe сотрудничество"
+msgstr "International activities"
+
+#: templates/pages/programm.html:27
+msgid "Техническое оснащение обучения"
+msgstr ""
+
+#: templates/pages/programm.html:35
+msgid "Краткая информация"
+msgstr ""

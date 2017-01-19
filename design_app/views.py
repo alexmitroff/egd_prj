@@ -52,7 +52,16 @@ def applicants(request):
 def degree(request, d_slug):
     template = 'pages/degree.html'
     degree = get_object_or_404(Degree, slug=d_slug)
-    var = {'degree':degree}
+    programmes = Programm.objects.filter(show=True, degree=degree.id)
+    form0 = programmes.filter(form=0)
+    form1 = programmes.filter(form=1)
+    form2 = programmes.filter(form=2)
+    var = { 
+            'degree':degree,
+            'form0':form0,
+            'form1':form1,
+            'form2':form2,
+            }
     return render(request, template, var)
 
 def programm(request,d_slug, p_slug):

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.flatpages.models import FlatPage as FlatPageOld
 
 # Create your models here.
 
@@ -82,6 +83,12 @@ class Degree(models.Model):
     def __str__(self):
         return self.name_ru
 
+def programm_image_location(instance, filename):
+    filename = filename.replace(" ","")
+    if len(filename) > 100:
+        filename = filename[:99]
+    return 'programmes/{0}/{1}'.format(instance.slug, filename)
+    
 class Programm(models.Model):
     """
     all about programm
@@ -134,7 +141,19 @@ class Programm(models.Model):
             null=True, help_text=_("use HTML for better result"))
     tech_ru = models.TextField(_('Tech in russian'),blank=True,
             null=True, help_text=_("use HTML for better result"))
+    pic = models.ImageField('image',upload_to=programm_image_location,
+            help_text='Title image', blank=True, null=True)
 
+    # --- alter save method to avoid useless images on HDD
+    def save(self, *args, **kwargs):
+        try:
+            this = Programm.objects.get(id=self.id)
+            if this.pic != self.pic:
+                this.pic.delete(save=False)
+        except:
+            pass
+        super().save(*args, **kwargs)
+    
     class Meta:
         verbose_name = _("Programm")
         verbose_name_plural = _("Programmes")
@@ -175,3 +194,66 @@ class Unit(models.Model):
     def __str__(self):
         return self.name_ru
 
+
+def image_location(instance, filename):
+    filename = filename.replace(" ","")
+    if len(filename) > 100:
+        filename = filename[:99]
+    return 'flatimages/{0}'.format(filename)
+
+class FlatImage(models.Model):
+    pic = models.ImageField('image',upload_to=image_location,
+            help_text='Title image', blank=True, null=True)
+    created = models.DateTimeField(_("Created"), auto_now_add=True)
+    modified = models.DateTimeField(_("Modified"),auto_now=True)
+    # --- alter save method to avoid useless images on HDD
+    def save(self, *args, **kwargs):
+        try:
+            this = FlatImage.objects.get(id=self.id)
+            if this.pic != self.pic:
+                this.pic.delete(save=False)
+        except:
+            pass
+        super().save(*args, **kwargs)
+
+    class Meta:
+        verbose_name = _("Flat image")
+        verbose_name_plural = _("Flat images")
+        ordering = ['modified']
+    def __str__(self):
+        return self.pic.url
+
+
+def document_location(instance, filename):
+    filename = filename.replace(" ","")
+    if len(filename) > 100:
+        filename = filename[:99]
+    return 'programmes/{0}/{1}'.format(instance.slug, filename)
+
+class Document(models.Model):
+    pos = models.IntegerField(_('Position'),default=0)
+    show = models.BooleanField(_('Show'), default=True)
+    tag = models.ManyToManyField(Tag,related_name='documents')
+    ## --- en locale
+    name_en = models.CharField( _("Name in english"), max_length = 140,
+            help_text=_("Name in english"), blank=True, null=True)
+    ## --- ru locale
+    name_ru = models.CharField( _("Name in russian"), max_length = 140,
+            help_text=_("Name in russian"), blank=True, null=True)
+    doc = models.FileField('image',upload_to=document_location,
+            help_text='Title image', blank=True, null=True)
+    # --- alter save method to avoid useless images on HDD
+    def save(self, *args, **kwargs):
+        try:
+            this = Document.objects.get(id=self.id)
+            if this.doc != self.doc:
+                this.doc.delete(save=False)
+        except:
+            pass
+        super().save(*args, **kwargs)
+    class Meta:
+        verbose_name = _("Document")
+        verbose_name_plural = _("Documents")
+        ordering = ['pos']
+    def __str__(self):
+        return self.name_ru

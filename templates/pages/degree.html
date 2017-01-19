@@ -5,22 +5,34 @@
 <div class="page-title">
     <h1>{{ degree.name_ru }}</h1>
 </div>
+<div class="form-title">
+    <h2>{% trans 'Очная форма' %}</h2>
+</div>
 <div class="flex-block">
-    {% for programm in degree.programm_set.all %}
-    <div class="flex-block-card" style="border-bottom-color:{{programm.color}}">
-        <div class="title-pic-place">
-            <div class="title-pic" style="background-image:url({{ degree.pic.url }})">
-            </div>
-        </div>
-        <div class="title-content">    
-            <h3>{{programm.name_ru}}</h3>
-            <p class="short">{{programm.short_ru}}</p>
-        </div>
-        <div class="title-actions">
-            <p><a href="{% url 'programm' degree.slug programm.slug %}" class="link">{% trans 'Подробнее' %} <i class="fa fa-arrow-right" aria-hidden="true"></i></a></p>
-        </div>
-    </div>
+    {% for programm in form0 %}
+        {% include 'include/flex-card.html' %}
     {% empty %}
+        <p>{% trans 'Нет очных программ.' %}</p>
+    {% endfor %}
+</div>
+<div class="form-title">
+    <h2>{% trans 'Очная-заочная форма' %}</h2>
+</div>
+<div class="flex-block">
+    {% for programm in form2 %}
+       {% include 'include/flex-card.html' %}
+    {% empty %}
+    <p>{% trans 'Нет очно-заочных программ.' %}</p>
+    {% endfor %}
+</div>
+<div class="form-title">
+    <h2>{% trans 'Заочная форма' %}</h2>
+</div>
+<div class="flex-block">
+    {% for programm in form1 %}
+       {% include 'include/flex-card.html' %}
+    {% empty %}
+    <p>{% trans 'Нет заочных программ.' %}</p>
     {% endfor %}
 </div>
 {% endblock %}

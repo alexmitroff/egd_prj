@@ -15,15 +15,16 @@ class NewsItemAdmin(admin.ModelAdmin):
 class ProgrammAdmin(admin.ModelAdmin):
     fieldsets = (
             (None, {'fields':('pos','show','slug','degree',
-                'form','duration','color')}),
+                'form','duration','color','pic')}),
             (_('Russian locale'), {'fields':('name_ru','summary_ru',
-                'content_ru','courses_ru','inter_ru','tech_ru')}),
+                'short_ru','content_ru','courses_ru','inter_ru','tech_ru')}),
             (_('English locale'), {'fields':('name_en','summary_en',
-                'content_en','courses_en','inter_en','tech_en')}),
+                'short_en','content_en','courses_en','inter_en','tech_en')}),
             )
     list_filter = ('degree', 'form')
 
 admin.site.register(Tag)
+admin.site.register(FlatImage)
 admin.site.register(Unit)
 admin.site.register(Degree)
 admin.site.register(Programm, ProgrammAdmin)

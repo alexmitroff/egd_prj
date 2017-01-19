@@ -7,7 +7,7 @@
 </div>
 <div class="flex-block">
     {% for degree in degrees %}
-    <div class="flex-block-card">
+    <div class="flex-card">
         <div class="title-pic-place">
             <div class="title-pic" style="background-image:url({{ degree.pic.url }})">
             </div>
@@ -17,7 +17,7 @@
             <p>{{degree.content_ru}}</p>
         </div>
         <div class="title-actions">
-            <p><a href="{% url 'degree' degree.slug %}" class="link">{% trans 'Подробнее' %} <i class="fa fa-arrow-right" aria-hidden="true"></i></a></p>
+            <p><a href="{% url 'degree' degree.slug %}" class="btn btn-white">{% trans 'Подробнее' %}</a></p>
         </div>
     </div>
     {% empty %}

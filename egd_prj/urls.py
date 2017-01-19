@@ -27,6 +27,14 @@ urlpatterns = [
     url(r'^en/contacts/$', fp_views.flatpage, {'url': '/en/contacts/'}, name='contacts_en'),
     url(r'^ru/about/$', fp_views.flatpage, {'url': '/ru/about/'}, name='about_ru'),
     url(r'^en/about/$', fp_views.flatpage, {'url': '/en/about/'}, name='about_en'),
+    url(r'^ru/ecodesign/$', fp_views.flatpage, {'url': '/ru/ecodesign/'}, name='ecodesign_ru'),
+    url(r'^en/ecodesign/$', fp_views.flatpage, {'url': '/en/ecodesign/'}, name='ecodesign_en'),
+    url(r'^ru/international/$', fp_views.flatpage, {'url': '/ru/international/'}, name='international_ru'),
+    url(r'^en/international/$', fp_views.flatpage, {'url': '/en/international/'}, name='international_en'),
+    url(r'^ru/scientific/$', fp_views.flatpage, {'url': '/ru/scientific/'}, name='scientific_ru'),
+    url(r'^en/scientific/$', fp_views.flatpage, {'url': '/en/scientific/'}, name='scientific_en'),
+    url(r'^ru/laboratories/$', fp_views.flatpage, {'url': '/ru/laboratories/'}, name='laboratories_ru'),
+    url(r'^en/laboratories/$', fp_views.flatpage, {'url': '/en/laboratories/'}, name='laboratories_en'),
     url(r'^api/', include(api_patterns)),
 ]
 

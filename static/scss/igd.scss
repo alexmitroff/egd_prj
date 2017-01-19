@@ -3,7 +3,7 @@ $sans: Source Sans Pro;
 
 $fontcolor: #444;
 $acolor: #0088cc;
-$flexcardcolor: #eee;
+$flexcardcolor: #ccc;
 $menubottom: #ccc;
 $menuactive: #37b34a;
 $menuleftborder: #fff;
@@ -12,7 +12,7 @@ $menuleftborderactive: #000;
 $borderlight: #eee;
 $textlight: #888;
 $textactive: #fff;
-$textlink: #bee1ff;
+$textlink: #37b34a;
 
 $green: rgba(56,178,76,.75);
 
@@ -74,6 +74,14 @@ body{
     }
 }
 
+.flatpicture{
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position: center;
+    height:20rem;
+    margin-bottom:2rem;
+}
+
 header,
 main {
 	display:flex;
@@ -87,11 +95,46 @@ header{
 main{
 	flex-grow: 1;
     margin-top:-2rem;
+    padding-bottom:1rem;
 }
 
 header, main, footer {
 	width:100%;
 	}
+
+footer{
+    padding-top:1rem;
+    background-color:#37b34a;
+    min-height:10rem;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    .footer-container{
+        flex-grow:1;
+        display:flex;
+        justify-content:center;
+        .footer-content{
+            width: $container-desktop;
+            display:flex;
+            .address,
+            .cumulus{
+                color:white;
+                width:30%;
+                ul{
+                    list-style:none;
+                }
+            }
+        }
+    }
+    .copy{
+        padding:.5rem;
+        background-color:rgba(0,0,0,.5);
+        p{
+            color:white;
+            text-align:center;
+        }
+    }
+}
 
 a{
 	text-decoration:none;
@@ -314,6 +357,7 @@ header{
 
 .units,
 .page-title,
+.form-title,
 .flex-block,
 .flatcontent{
     padding:1rem;
@@ -337,15 +381,16 @@ $flexborder: .5rem solid #fff;
     display:flex;
     flex-wrap:wrap;
     justify-content:space-between;
-    .flex-block-card{
+    .flex-card{
         margin-bottom:1rem;
         width:32%;
+        padding:.3rem;
         box-sizing: border-box;
+        border-bottom:.3rem solid $flexcardcolor;
         display:flex;
         flex-direction:column;
         justify-content:space-between;
         background-color:$flexcardcolor;
-        border:.3rem solid $flexcardcolor;
         .title-pic-place{
             width:100%;
             .title-pic{
@@ -358,12 +403,14 @@ $flexborder: .5rem solid #fff;
         .title-content{
             flex-grow:1;
             padding:1rem;
+            color:white;
             h3 {
                 margin-bottom:1rem;
             }
         }
         .title-actions{
-            padding: 0 1rem 1rem 1rem;
+            padding: 1rem 1rem 2rem 1rem;
+            text-align:center;
         }
     }
 }
@@ -383,6 +430,52 @@ $flexborder: .5rem solid #fff;
             padding:1rem; 
         }
     }
+}
+
+a.btn{
+    padding:.5rem;
+    border-radius:.4rem;
+    color:$flexcardcolor;
+}
+
+a.btn-white{
+    background-color:rgba(255,255,255,.8);
+}
+
+a.btn-white:hover{
+    background-color:white;
+}
+
+$bropborder: .2rem solid #ccc;
+
+.drop{
+    border-top:$bropborder;
+    border-bottom:$bropborder;
+    padding-top:1rem;
+    padding-bottom:1rem;
+    margin-top:1rem;
+    h3{
+        padding-right:1rem;
+        padding-bottom:1rem;
+        cursor:pointer;
+        display:flex;
+        justify-content:space-between;
+    }
+    h3 + div,
+    i{
+        -webkit-transition: all 0.3s ease-out 0s;
+        -moz-transition: all 0.3s ease-out 0s;
+        -o-transition: all 0.3s ease-out 0s;
+        transition: all 0.3s ease-out 0s;
+    }
+    h3.collapsed{
+        padding-bottom:0;
+    }
+    h3.collapsed + div{
+        overflow:hidden;
+        height:0;
+    }
+    
 }
 
 @media (min-width:$min-mobileh) and (max-width:$max-mobileh) {}

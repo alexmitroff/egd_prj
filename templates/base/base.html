@@ -41,7 +41,27 @@
             <div class="content">{% block content %}{% endblock %}</div>
 		</div>
 	</main>
-	<footer></footer>
+	<footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="address">
+                    <ul>
+                        <li>Россия, Санкт-Петербург,</li>
+                        <li>Гражданский пр. 28,</li>
+                        <li>5 этаж, комната 518</li>
+                        <li><a href="mailto:informatika@imop.spbstu.ru">informatika@imop.spbstu.ru</a></li>
+                    </ul>    
+                </div>
+                <div class="cumulus">
+                    <p>Член Международной ассоциации университетов и колледжей искусств, дизайна и медиа
+                    «Cumulus»</p>
+                </div>    
+            </div>
+        </div>
+        <div class="copy">
+            <p>&copy; {% trans 'Кафедра инженерной графики и дизайна' %} 2017</p>
+        </div>
+    </footer>
     {% block templates %}{% endblock %}
     <script type="text/javascript" src="{% static 'js/jquery-3.1.1.min.js'  %}"></script>
     {% block scripts %}{% endblock %}

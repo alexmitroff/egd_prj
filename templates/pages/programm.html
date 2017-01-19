@@ -1,23 +1,32 @@
 {% extends 'base/base.html' %}
-{% load i18n %}
+{% load staticfiles i18n %}
 {% block title %}{{ programm.name_ru }} | {{degree.name_ru}}  | {% endblock %}
 {% block content %}
 <div class="page-title">
-    <h1>{{degree.name_ru}}: {{ programm.name_ru }}</h1>
+    <h1 style="color:{{programm.color}}">{{degree.name_ru}}: {{ programm.name_ru }}</h1>
 </div>
 <div class="programm">
     <div class="info">
         <div>{{programm.content_ru|safe}}</div>
-        <div class="drop">
-            <h3>{% trans "Изучаемые предматы" %}</h3>
+        <div class="drop" style="border-top-color:{{programm.color}};border-bottom-color:{{programm.color}}">
+            <h3 class="collapsed" style="color:{{programm.color}}">
+                <span>{% trans "Изучаемые предметы" %}</span>
+                <span><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+            </h3>
             <div>{{programm.courses_ru|safe}}</div>
         </div>
-        <div class="drop">
-            <h3>{% trans "Международной сотрудничество" %}</h3>
+        <div class="drop" style="border-top-color:{{programm.color}};border-bottom-color:{{programm.color}}">
+            <h3 class="collapsed" style="color:{{programm.color}}">
+                <span>{% trans "Международноe сотрудничество" %}</span>
+                <span><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+            </h3>
             <div>{{programm.inter_ru|safe}}</div>
         </div>
-        <div class="drop">
-            <h3>{% trans "Техническое оснащение обучения" %}</h3>
+        <div class="drop" style="border-top-color:{{programm.color}};border-bottom-color:{{programm.color}}">
+            <h3 class="collapsed" style="color:{{programm.color}}">
+                <span>{% trans "Техническое оснащение обучения" %}</span>
+                <span><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+            </h3>
             <div>{{programm.tech_ru|safe}}</div>
         </div>
     </div>
@@ -30,5 +39,13 @@
 </div>
 {% endblock %}
 {% block templates %}{% endblock %}
-{% block scripts %}{% endblock %}
-{% block docready %}{% endblock %}
+{% block scripts %}
+{% endblock %}
+{% block backscriptbody %}
+{% endblock %}
+{% block docready %}
+    $("h3").click(function(){
+        $(this).toggleClass("collapsed");
+        $(this).find("i").toggleClass("fa-rotate-180");
+    });
+{% endblock %}
