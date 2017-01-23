@@ -30,7 +30,8 @@ body {
   height: 20rem; }
   .header-egd svg {
     border-left: 1rem solid black;
-    width: 40rem; }
+    width: 40rem;
+    height: auto; }
 
 .flatpicture {
   background-repeat: no-repeat;

@@ -17,7 +17,7 @@ from django.utils.translation import ugettext_lazy as _
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STAT_DIR = os.path.join(BASE_DIR, "static")
-STAT_ROOT = ''
+STAT_ROOT = '/home/alex/static/egd'
 MEDI_DIR = os.path.join(BASE_DIR, "media")
 TEMPL_DIR = os.path.join(BASE_DIR, "templates")
 LOCAL_DIR = os.path.join(BASE_DIR, "locale")
