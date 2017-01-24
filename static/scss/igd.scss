@@ -31,7 +31,7 @@ $max-tableth: $min-desktop - 1px;
 
 $container-mobile: 100%;
 $container-tablet: $container-mobile;
-$container-desktop: 1200px;
+$container-desktop: $min-desktop;
 
 
 a{
@@ -63,16 +63,41 @@ body{
 }
 
 .header-egd{
-    padding-top:5rem;
     background-repeat:no-repeat;
     background-size:cover;
     background-position:top center;
     background-image:url(../img/default/poly.png);
-    height:20rem;
+    height:25rem;
     svg{
         border-left:1rem solid black;
         width:40rem;
         height:auto;
+    }
+    .content{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        .mobile-menu{
+            display:block;
+            padding:1rem;
+            background-color:white;
+			border-right:1rem solid $menuleftborder;
+            background-color: $menuleftborder;
+            text-align:center;
+            cursor:pointer;
+            span{
+                display:block;
+                padding-bottom:.3rem;
+            }
+            i{
+                display:block;
+                font-size:2rem;
+            }
+        }
+        .mobile-menu:hover{
+            background-color:$menubottom;
+            border-right-color:$menuleftborderactive;
+        }
     }
 }
 
@@ -116,12 +141,14 @@ footer{
         display:flex;
         justify-content:center;
         .footer-content{
-            width: $container-desktop;
+            width:100%;
+            max-width: $container-desktop;
             display:flex;
+            flex-wrap:wrap;
             .address,
             .cumulus{
                 color:white;
-                width:30%;
+                width:100%;
                 ul{
                     list-style:none;
                 }
@@ -156,11 +183,9 @@ a.link:hover{
 
 .container{
 	display:flex;
-	flex-grow:1;
-	
+    width:100%;
+    max-width:$container-desktop;	
 	.menu {
-		flex-basis: 25%;
-		width:100%;
 		display:none;
 		nav {
 			ul {
@@ -209,8 +234,7 @@ a.link:hover{
 	}
 	
 	.content {
-        margin-left:1rem;
-		flex-basis:70%;
+		width:100%;
         height:100%;
         background:white;
 		.igd-top,
@@ -300,7 +324,7 @@ header{
 		justify-content:space-between;
         box-sizing: border-box;
 		.feed-item{
-			flex-basis:30%;
+			width:100%;
 			padding:.5rem;
 			.feed-item-rubric{
 			    padding:.5rem;
@@ -330,16 +354,17 @@ header{
 	}
 }
 
-.slick {
-    div{
+.featured-carousel{
+    .featured-pic{
+        background-image:url(../img/default/default.jpg);
         background-size:cover;
         background-position:center;
-        display:block;
         height:30rem;
-        .slide{
+        .featured-slide{
+            height:100%;
             display:flex;
             justify-content:flex-end;
-            .description {
+            .featured-description {
                 padding:1rem;
                 background-color:$green;
                 flex-basis:33%;
@@ -354,9 +379,6 @@ header{
                 }
             }
         }
-    }
-    .default{
-        background-image:url(../img/default/default.jpg);
     }
 }
 
@@ -388,7 +410,7 @@ $flexborder: .5rem solid #fff;
     justify-content:space-between;
     .flex-card{
         margin-bottom:1rem;
-        width:32%;
+        width:100%;
         padding:.3rem;
         box-sizing: border-box;
         border-bottom:.3rem solid $flexcardcolor;
@@ -422,13 +444,16 @@ $flexborder: .5rem solid #fff;
 
 .programm{
     display:flex;
+    flex-wrap:wrap;
     padding:1rem;
     .info{
        padding:1rem;
-       width:70%; 
+       width:100%;
+       order:1; 
     }
     .summary{
-        width:30%;
+        order:0;
+        width:100%;
         .summary-content{
             border-top:.3rem solid $flexcardcolor;
             background-color:#eee;
@@ -483,11 +508,56 @@ $bropborder: .2rem solid #ccc;
     
 }
 
-@media (min-width:$min-mobileh) and (max-width:$max-mobileh) {}
-@media (min-width:$min-tabletv) and (max-width:$max-tabletv) {}
+@media (min-width:$min-mobileh) and (max-width:$max-mobileh) {
+    .flex-block{
+        .flex-card{
+            width:49%
+        }
+    }
+}
+@media (min-width:$min-tabletv){
+    .flex-block{
+        .flex-card{
+            width:32%
+        }
+    }
+    .programm{
+        flex-wrap:nowrap;
+        .info{
+            order:0;
+            width:70%;
+        }
+        .summary{
+            order:0;
+            width:30%;
+        }
+    }
+}
+@media (min-width:$min-tabletv) and (max-width:$max-tabletv) {
+}
 @media (min-width:$min-tableth) and (max-width:$max-tableth) {
-	.container{.menu{display:block;}}
+    .flex-block{
+        .flex-card{
+            width:24%
+        }
+    }
 }
 @media (min-width:$min-desktop) {
-	.container{flex-basis:$container-desktop;flex-grow:0; .menu{display:block;}}
+    .header-egd{
+        .content{
+            .mobile-menu{
+                display:none;
+            }
+        }
+    }
+    .container{
+        .menu{
+            display:block;
+            width:25%;
+        }
+        .content{
+            margin-left:1rem;
+            width:74%;
+        }
+    }
 }
