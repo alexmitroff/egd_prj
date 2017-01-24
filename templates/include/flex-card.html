@@ -1,14 +1,16 @@
 {% load i18n %}
-    <div class="flex-card" style="background-color:{{programm.color}}">
+    <div class="flex-card" style="border-top-color:{{programm.color}}">
         <div class="title-pic-place">
-            <div class="title-pic" style="background-image:url({% if programm.pic %}{{ programm.pic.url }}{% else %}{{ degree.pic.url }}{% endif %})">
-            </div>
+            <a href="{% url 'programm' degree.slug programm.slug %}">
+                <div class="title-pic" style="background-image:url({% if programm.pic %}{{ programm.pic.url }}{% else %}{{ degree.pic.url }}{% endif %})"></div></a>
+        </div>
+        <div class="title-title">    
+            <h3>{{programm.name_ru}}</h3>
         </div>
         <div class="title-content">    
-            <h3>{{programm.name_ru}}</h3>
             <p class="short">{{programm.short_ru}}</p>
         </div>
         <div class="title-actions">
-            <p><a href="{% url 'programm' degree.slug programm.slug %}" class="btn btn-white" style="color:{{programm.color}}">{% trans 'Подробнее' %}</i></a></p>
+            <p><a href="{% url 'programm' degree.slug programm.slug %}" class="btn btn-white" style="color:{{programm.color}}">{% trans 'Подробнее' %}</a></p>
         </div>
     </div>
