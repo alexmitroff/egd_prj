@@ -12,6 +12,10 @@ class NewsItemAdmin(admin.ModelAdmin):
     """
     list_filter = ('category', 'publish')
 
+class ProgrammImageInline(admin.StackedInline):
+    model = ProgrammImage
+    extra=0
+
 class ProgrammAdmin(admin.ModelAdmin):
     fieldsets = (
             (None, {'fields':('pos','show','slug','degree',
@@ -22,6 +26,7 @@ class ProgrammAdmin(admin.ModelAdmin):
                 'short_en','content_en','courses_en','inter_en','tech_en')}),
             )
     list_filter = ('degree', 'form')
+    inlines = [ ProgrammImageInline, ]
 
 admin.site.register(Tag)
 admin.site.register(FlatImage)

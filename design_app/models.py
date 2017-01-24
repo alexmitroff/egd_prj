@@ -141,7 +141,7 @@ class Programm(models.Model):
             null=True, help_text=_("use HTML for better result"))
     tech_ru = models.TextField(_('Tech in russian'),blank=True,
             null=True, help_text=_("use HTML for better result"))
-    pic = models.ImageField('image',upload_to=programm_image_location,
+    pic = models.ImageField(_('image'),upload_to=programm_image_location,
             help_text='Title image', blank=True, null=True)
 
     # --- alter save method to avoid useless images on HDD
@@ -160,6 +160,40 @@ class Programm(models.Model):
         ordering = ['pos']
     def __str__(self):
         return self.name_ru
+
+def programmimage_image_location(instance, filename):
+    filename = filename.replace(" ","")
+    if len(filename) > 100:
+        filename = filename[:99]
+    return 'programmes/{0}/images/{1}'.format(instance.programm.slug, filename)
+
+class ProgrammImage(models.Model):
+    pos = models.IntegerField(_('Position'),default=0)
+    show = models.BooleanField(_('Show'), default=True)
+    programm = models.ForeignKey(Programm, default = 0)
+    name_en = models.CharField( _("Name in english"), max_length = 140,
+            help_text=_("Name in english"), blank=True, null=True)
+    name_ru = models.CharField( _("Name in russian"), max_length = 140,
+            help_text=_("Name in russian"), blank=True, null=True)
+    pic = models.ImageField(_('image'),upload_to=programmimage_image_location,
+            help_text='image', blank=True, null=True)
+    # --- alter save method to avoid useless images on HDD
+    def save(self, *args, **kwargs):
+        try:
+            this = ProgrammImage.objects.get(id=self.id)
+            if this.pic != self.pic:
+                this.pic.delete(save=False)
+        except:
+            pass
+        super().save(*args, **kwargs)
+    
+    class Meta:
+        verbose_name = _("Programm image")
+        verbose_name_plural = _("Programm images")
+        ordering = ['pos']
+    def __str__(self):
+        return self.name_ru
+    
 
 class Tag(models.Model):
     word = models.CharField(_("Word"), max_length=35)

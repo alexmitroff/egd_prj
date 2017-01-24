@@ -68,6 +68,8 @@ def programm(request,d_slug, p_slug):
     template = 'pages/programm.html'
     degree = get_object_or_404(Degree, slug=d_slug)
     programm = get_object_or_404(Programm, slug=p_slug)
+    images = ProgrammImage.objects.filter(show=True, programm = programm.pk)[:3]
     var = { 'degree':degree,
-            'programm':programm}
+            'programm':programm,
+            'images':images}
     return render(request, template, var)

@@ -461,18 +461,40 @@ $flexborder: .5rem solid #fff;
     display:flex;
     flex-wrap:wrap;
     padding:1rem;
-    .info{
-       padding:1rem;
+    > .info{
+       padding:1rem 1rem 1rem 0;
        width:100%;
        order:1; 
     }
-    .summary{
+    > .summary{
         order:0;
         width:100%;
-        .summary-content{
+        > .summary-content{
             border-top:.3rem solid $flexcardcolor;
             background-color:#eee;
             padding:1rem; 
+        }
+    }
+}
+
+.programm-images{
+    padding:1rem;
+    display:flex;
+    justify-content:space-between;
+    > .image-container{
+        width: 31%;
+        > .image{
+            display:block;
+            width:100%;
+            padding-top:100%;
+            background-size:cover;
+            background-position:center;
+            opacity:.9;
+            cursor:pointer;   
+        }
+
+        > .image:hover{
+            opacity:1;
         }
     }
 }
@@ -523,6 +545,8 @@ $bropborder: .2rem solid #ccc;
     
 }
 
+.modal{}
+
 @media (min-width:$min-mobileh) and (max-width:$max-mobileh) {
     .flex-block{
         .flex-card{
@@ -540,11 +564,12 @@ $bropborder: .2rem solid #ccc;
 @media (min-width:$min-tabletv){
     .programm{
         flex-wrap:nowrap;
-        .info{
+        > .info{
+            padding-top:0;
             order:0;
             width:70%;
         }
-        .summary{
+        > .summary{
             order:0;
             width:30%;
         }

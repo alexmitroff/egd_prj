@@ -37,6 +37,14 @@
         </div>
     </div>    
 </div>
+<div class="programm-images">
+    {% for image in images %}
+        <div class="image-container">
+            <div class="image" style="background-image:url('{{image.pic.url}}');"></div>
+        </div>
+    {% empty %}
+    {% endfor %}
+</div>
 {% endblock %}
 {% block templates %}{% endblock %}
 {% block scripts %}
