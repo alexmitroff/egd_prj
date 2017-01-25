@@ -26,7 +26,7 @@
                     <div class="top-content"></div>
             </div>    
         </div>
-        <div class="header-egd">
+        <div id="header-pic" class="header-egd">
             <div class="content">
                     <div class="logo">
                         {% include 'include/logo.html' %}
@@ -114,6 +114,11 @@
             $(".modal .modal-wrapper").click(function(){
                 hideModal();
             });         
+            
+            $(".drop h3").click(function(){
+                $(this).toggleClass("collapsed");
+                $(this).find("i").toggleClass("fa-rotate-180");
+            });
         });
     </script>
 </body>

@@ -65,11 +65,14 @@ def degree(request, d_slug):
     return render(request, template, var)
 
 def programm(request,d_slug, p_slug):
+    l = request.LANGUAGE_CODE
     template = 'pages/programm.html'
     degree = get_object_or_404(Degree, slug=d_slug)
     programm = get_object_or_404(Programm, slug=p_slug)
     images = ProgrammImage.objects.filter(show=True, programm = programm.pk)[:3]
+    apply_url = "/{0}/applications/{1}/".format(l,degree.slug)
     var = { 'degree':degree,
             'programm':programm,
+            'apply':apply_url,
             'images':images}
     return render(request, template, var)

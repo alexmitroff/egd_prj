@@ -17,24 +17,36 @@ from design_app import views
 
 api_patterns = [
     url(r'feed/$', views.feed, name='feed'),
-]
+    ]
+
+ru_flat = [
+    url(r'contacts/$', fp_views.flatpage, {'url': '/ru/contacts/'}, name='contacts_ru'),
+    url(r'about/$', fp_views.flatpage, {'url': '/ru/about/'}, name='about_ru'),
+    url(r'ecodesign/$', fp_views.flatpage, {'url': '/ru/ecodesign/'}, name='ecodesign_ru'),
+    url(r'international/$', fp_views.flatpage, {'url': '/ru/international/'}, name='international_ru'),
+    url(r'scientific/$', fp_views.flatpage, {'url': '/ru/scientific/'}, name='scientific_ru'),
+    url(r'laboratories/$', fp_views.flatpage, {'url': '/ru/laboratories/'}, name='laboratories_ru'),
+    url(r'applications/bachelor/$', fp_views.flatpage, {'url': '/ru/applications/bachelor/'}, name='app_bach_ru'),
+    url(r'applications/masters/$', fp_views.flatpage, {'url': '/ru/applications/masters/'}, name='app_mast_ru'),
+        ]
+
+en_flat = [
+    url(r'contacts/$', fp_views.flatpage, {'url': '/en/contacts/'}, name='contacts_en'),
+    url(r'about/$', fp_views.flatpage, {'url': '/en/about/'}, name='about_en'),
+    url(r'ecodesign/$', fp_views.flatpage, {'url': '/en/ecodesign/'}, name='ecodesign_en'),
+    url(r'international/$', fp_views.flatpage, {'url': '/en/international/'}, name='international_en'),
+    url(r'scientific/$', fp_views.flatpage, {'url': '/en/scientific/'}, name='scientific_en'),
+    url(r'laboratories/$', fp_views.flatpage, {'url': '/en/laboratories/'}, name='laboratories_en'),
+    url(r'applications/bachelor/$', fp_views.flatpage, {'url': '/en/applications/bachelor/'}, name='app_bach_en'),
+    url(r'applications/masters/$', fp_views.flatpage, {'url': '/en/applications/masters/'}, name='app_mast_en'),
+        ]
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^i18n/', include('django.conf.urls.i18n')),
-    url(r'^ru/contacts/$', fp_views.flatpage, {'url': '/ru/contacts/'}, name='contacts_ru'),
-    url(r'^en/contacts/$', fp_views.flatpage, {'url': '/en/contacts/'}, name='contacts_en'),
-    url(r'^ru/about/$', fp_views.flatpage, {'url': '/ru/about/'}, name='about_ru'),
-    url(r'^en/about/$', fp_views.flatpage, {'url': '/en/about/'}, name='about_en'),
-    url(r'^ru/ecodesign/$', fp_views.flatpage, {'url': '/ru/ecodesign/'}, name='ecodesign_ru'),
-    url(r'^en/ecodesign/$', fp_views.flatpage, {'url': '/en/ecodesign/'}, name='ecodesign_en'),
-    url(r'^ru/international/$', fp_views.flatpage, {'url': '/ru/international/'}, name='international_ru'),
-    url(r'^en/international/$', fp_views.flatpage, {'url': '/en/international/'}, name='international_en'),
-    url(r'^ru/scientific/$', fp_views.flatpage, {'url': '/ru/scientific/'}, name='scientific_ru'),
-    url(r'^en/scientific/$', fp_views.flatpage, {'url': '/en/scientific/'}, name='scientific_en'),
-    url(r'^ru/laboratories/$', fp_views.flatpage, {'url': '/ru/laboratories/'}, name='laboratories_ru'),
-    url(r'^en/laboratories/$', fp_views.flatpage, {'url': '/en/laboratories/'}, name='laboratories_en'),
+    url(r'^en/', include(en_flat)),
+    url(r'^ru/', include(ru_flat)),
     url(r'^api/', include(api_patterns)),
 ]
 

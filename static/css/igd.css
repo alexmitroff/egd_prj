@@ -24,7 +24,7 @@ body {
 .header-egd {
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: top center;
+  background-position: center;
   background-image: url(../img/default/poly.png);
   height: 25rem; }
   .header-egd svg {
@@ -165,10 +165,10 @@ nav ul {
     width: 100%;
     height: 100%;
     background: white; }
-    .container .content ul {
+    .container .content ul:not(.slick-dots) {
       padding-left: 1rem;
       list-style: none; }
-      .container .content ul li:before {
+      .container .content ul:not(.slick-dots) li:before {
         font-family: 'FontAwesome';
         content: '\f054';
         margin: 0 5px 0 -15px;
@@ -297,7 +297,7 @@ header .header-poly {
 .flex-block {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between; }
+  justify-content: space-around; }
   .flex-block .flex-card {
     margin-bottom: 1rem;
     width: 100%;
@@ -342,6 +342,18 @@ header .header-poly {
       border-top: 0.3rem solid #ccc;
       background-color: #eee;
       padding: 1rem; }
+      .programm > .summary > .summary-content > .summary-action {
+        padding: 2rem 0 1rem 0;
+        text-align: center; }
+        .programm > .summary > .summary-content > .summary-action > a {
+          display: block;
+          opacity: .8;
+          color: white;
+          font-size: 1.2rem;
+          width: 100%;
+          box-sizing: border-box; }
+        .programm > .summary > .summary-content > .summary-action > a:hover {
+          opacity: 1; }
 
 .programm-images {
   padding: 1rem;

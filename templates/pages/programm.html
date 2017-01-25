@@ -34,6 +34,9 @@
         <div class="summary-content" style="border-top-color:{{programm.color}}">
             <h3>{% trans "Краткая информация" %}</h3>
             {{programm.summary_ru|safe}}
+            <div class="summary-action">
+            <a href="{{apply}}" class="btn" style="background-color:{{programm.color}}">{% trans 'Поступление' %}</a>
+            </div>
         </div>
     </div>    
 </div>
@@ -50,10 +53,7 @@
 {% block scripts %}
 {% endblock %}
 {% block backscriptbody %}
+    $('#header-pic').css("background-image", "url({{programm.pic.url}})");
 {% endblock %}
 {% block docready %}
-    $("h3").click(function(){
-        $(this).toggleClass("collapsed");
-        $(this).find("i").toggleClass("fa-rotate-180");
-    });
 {% endblock %}
