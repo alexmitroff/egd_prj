@@ -66,7 +66,7 @@ class Degree(models.Model):
     content_ru = models.TextField(_('Content in russian'),blank=True,
             null=True, help_text=_("use HTML for better result"))
     pic = models.ImageField('image',upload_to='degree/titles/',
-            help_text='Title image', blank=True, null=True)
+            help_text=_('Title image'), blank=True, null=True)
     # --- alter save method to avoid useless images on HDD
     def save(self, *args, **kwargs):
         try:
@@ -82,6 +82,43 @@ class Degree(models.Model):
         ordering = ['pos']
     def __str__(self):
         return self.name_ru
+
+class Rubric(models.Model):
+    """
+    It defines rubric within degree
+    """
+    degree = models.ForeignKey(Degree, default=0)
+    pos = models.IntegerField(_('Position'),default=0)
+    show = models.BooleanField(_('Show'), default=True)
+    slug = models.CharField( _('URL'), max_length = 140,
+            help_text=_("it will shows up in address area"), default='slug')
+    ## --- en locale
+    name_en = models.CharField( _("Name in english"), max_length = 140,
+            help_text=_("Name in english"), blank=True, null=True)
+    content_en = models.TextField(_('Content in english'),blank=True,
+            null=True, help_text=_("use HTML for better result"))
+    ## --- ru locale
+    name_ru = models.CharField( _("Name in russian"), max_length = 140,
+            help_text=_("Name in russian"), blank=True, null=True)
+    content_ru = models.TextField(_('Content in russian'),blank=True,
+            null=True, help_text=_("use HTML for better result"))
+    pic = models.ImageField('image',upload_to='degree/rubrics/',
+            help_text=_('Title image'), blank=True, null=True)
+    # --- alter save method to avoid useless images on HDD
+    def save(self, *args, **kwargs):
+        try:
+            this = Rubric.objects.get(id=self.id)
+            if this.pic != self.pic:
+                this.pic.delete(save=False)
+        except:
+            pass
+        super().save(*args, **kwargs)
+    class Meta:
+        verbose_name = _("Degree rubric")
+        verbose_name_plural = _("Degree rubrics")
+        ordering = ['pos']
+    def __str__(self):
+        return "{0} | {1}".format(self.degree.name_ru, self.name_ru)
 
 def programm_image_location(instance, filename):
     filename = filename.replace(" ","")
@@ -104,6 +141,7 @@ class Programm(models.Model):
     pos = models.IntegerField(_('Position'),default=0)
     show = models.BooleanField(_('Show'), default=True)
     degree = models.ForeignKey(Degree, default = 0)
+    rubric = models.ForeignKey(Rubric, blank=True, null=True)
     form = models.IntegerField(_('Form'),choices=FORM_CHOICES, default=INTRAMURAL)
     duration = models.IntegerField(_('Duration'), default=4,
             help_text=_("in years"))
