@@ -452,6 +452,10 @@ a.btn-white:hover {
   .content ol li:before {
     content: counters(item,".") ". ";
     counter-increment: item; }
+.content h4 {
+  margin: 1.5rem 0 1rem 0; }
+.content ul li {
+  padding-bottom: .5rem; }
 
 .root-list > li {
   margin-bottom: 1rem;

@@ -22,6 +22,9 @@ def news(request):
     var = {'categories':categories}
     return render(request, template, var)
 
+def fix_date(d):
+    return d.strftime('%d.%m.%Y')
+
 def feed(request):
     l = request.LANGUAGE_CODE
     if 'category' in request.GET:
@@ -31,11 +34,11 @@ def feed(request):
         news = NewsItem.objects.filter(publish=True)
 
     if l == 'ru':
-        data = [{'date':item.created,'color':item.category.color,
+        data = [{'date':fix_date(item.created),'color':item.category.color,
             'category':item.category.name_ru,'title': item.title_ru, 
             'short': item.content_ru} for item in news]
     else:
-        data = [{'date':item.created,'color':item.category.color,
+        data = [{'date':fix_date(item.created),'color':item.category.color,
             'category':item.category.name_en,'title': item.title_en, 
             'short': item.content_en} for item in news]
 
