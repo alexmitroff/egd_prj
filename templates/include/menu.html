@@ -16,6 +16,18 @@
                 <span><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
             </a>
         </li>
+        <li class="">
+            <a href="#!">
+                <span>{% trans 'Секция начертательной геометрии и инженерной графики' %}</span>
+                <span><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+            </a>
+        </li>
+        <li class="">
+            <a href="#!">
+                <span>{% trans 'Работы студентов' %}</span>
+                <span><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+            </a>
+        </li>
         <li class="{% if url_name == 'applicants' %}active{% endif %}">
             <a href="{% url 'applicants'  %}">
                 <span>{% trans 'Абитуриентам' %}</span>
@@ -55,6 +67,12 @@
         <li class="{% if url_name == 'international_ru' or url_name == 'international_en' %}active{% endif %}">
             <a href="{% if LANGUAGE_CODE == 'ru' %}{% url 'international_ru' %}{% else %}{% url 'international_en' %}{% endif %}">
                 <span>{% trans 'Международная деятельность' %}</span>
+                <span><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+            </a>
+        </li>
+        <li class="">
+            <a href="#!">
+                <span>{% trans 'Студентам кафедры' %}</span>
                 <span><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
             </a>
         </li>
