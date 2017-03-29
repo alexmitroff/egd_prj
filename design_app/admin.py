@@ -29,6 +29,7 @@ class ProgrammAdmin(admin.ModelAdmin):
     inlines = [ ProgrammImageInline, ]
 
 admin.site.register(Tag)
+admin.site.register(Lab)
 admin.site.register(FlatImage)
 admin.site.register(Unit)
 admin.site.register(Degree)
