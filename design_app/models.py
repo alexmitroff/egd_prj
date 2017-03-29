@@ -81,7 +81,7 @@ class Degree(models.Model):
         verbose_name_plural = _("Degrees")
         ordering = ['pos']
     def __str__(self):
-        return self.name_ru
+        return  self.name_ru
 
 class Rubric(models.Model):
     """
