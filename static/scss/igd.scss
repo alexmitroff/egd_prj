@@ -5,7 +5,7 @@ $fontcolor: #444;
 $acolor: #0088cc;
 $flexcardcolor: #ccc;
 $menubottom: #ccc;
-$menuactive: #37b34a;
+$menuactive: #00392A;
 $menuleftborder: #fff;
 $menuleftborderactive: #000;
 
@@ -14,7 +14,7 @@ $textlight: #888;
 $textactive: #fff;
 $textlink: #bee1ff;
 
-$green: rgba(56,178,76,.75);
+$green: rgba(0,57,42,.75);
 
 $bodybackground: #eee;
 $contentbackground: white;
@@ -62,13 +62,12 @@ body{
 	background-color: $bodybackground;
 }
 
-
 .header-egd{
     background-repeat:no-repeat;
     background-size:cover;
     background-position:center;
     background-image:url(../img/default/poly.png);
-    height:25rem;
+    height:20rem;
     svg{
         display:none;
         border-left:1rem solid black;
@@ -111,6 +110,7 @@ body{
     margin-bottom:2rem;
 }
 
+
 header,
 main {
 	display:flex;
@@ -133,7 +133,7 @@ header, main, footer {
 
 footer{
     padding-top:1rem;
-    background-color:#37b34a;
+    background-color:$menuactive;
     min-height:10rem;
     display:flex;
     flex-direction:column;
@@ -287,7 +287,13 @@ header{
         }
     }
     .header-poly{
-        padding:1rem;
+        padding:.5rem;
+        background-color:$menuactive;
+        .poly{
+            height:3rem;
+            .st0{fill:white;}
+            .st1{fill:white;}
+        }
     }
     .header-egd{
     }

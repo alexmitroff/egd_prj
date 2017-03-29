@@ -26,7 +26,7 @@ body {
   background-size: cover;
   background-position: center;
   background-image: url(../img/default/poly.png);
-  height: 25rem; }
+  height: 20rem; }
   .header-egd svg {
     display: none;
     border-left: 1rem solid black;
@@ -79,7 +79,7 @@ header, main, footer {
 
 footer {
   padding-top: 1rem;
-  background-color: #37b34a;
+  background-color: #00392A;
   min-height: 10rem;
   display: flex;
   flex-direction: column;
@@ -152,7 +152,7 @@ nav ul {
       background-color: #ccc; }
   nav ul li.active a {
     border-left: 1rem solid #000;
-    background-color: #37b34a;
+    background-color: #00392A;
     color: #fff; }
 
 .container {
@@ -198,7 +198,14 @@ header .header-egd {
   header .header-egd .content {
     flex-basis: 1200px; }
 header .header-poly {
-  padding: 1rem; }
+  padding: .5rem;
+  background-color: #00392A; }
+  header .header-poly .poly {
+    height: 3rem; }
+    header .header-poly .poly .st0 {
+      fill: white; }
+    header .header-poly .poly .st1 {
+      fill: white; }
 
 .news .filters,
 .news .feed {
@@ -268,7 +275,7 @@ header .header-poly {
     justify-content: flex-end; }
     .featured-carousel .featured-pic .featured-slide .featured-description {
       padding: 1rem;
-      background-color: rgba(56, 178, 76, 0.75);
+      background-color: rgba(0, 57, 42, 0.75);
       flex-basis: 33%;
       display: flex;
       flex-direction: column;
