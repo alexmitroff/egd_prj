@@ -1,6 +1,11 @@
 {% extends 'base/base.html' %}
 {% load staticfiles i18n %}
 {% block title %}{% trans 'Новости' %} | {% endblock %}
+
+{% block top-carousel %}
+            {% include "include/top-carousel.html" %}
+{% endblock %}
+
 {% block content %}
     <div class="featured-carousel" id="featured">
         <div class="featured-pic">
@@ -44,7 +49,6 @@
 {% endblock %}
 {% block scripts %}
 <script type="text/javascript" src="{% static 'js/jsrender.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'slick/slick.min.js' %}"></script>
 {% endblock %}
 {% block backscriptbody %}
 {% endblock %}

@@ -27,21 +27,15 @@
                             </svg>
                         </a>
                         <a href="/">
+                            {% include 'include/logo.html' %}
                         </a>
                     </div>
-                    <div class="top-content"></div>
+                    <div class="mobile-menu" role="modal" data-target="#m-menu">
+                    </div>
             </div>    
         </div>
         <div id="header-pic" class="header-egd">
-            <div class="content">
-                    <div class="logo">
-                        {% include 'include/logo.html' %}
-                    </div>
-                    <div class="mobile-menu" role="modal" data-target="#m-menu">
-                        <span>{% trans 'MENU' %}</span>
-                        <i class="fa fa-bars" aria-hidden="true"></i>
-                    </div>
-            </div>    
+            {% block top-carousel %}{% endblock %}
         </div>    
 	</header>
 	<main>
@@ -78,6 +72,7 @@
     </div>
     {% block templates %}{% endblock %}
     <script type="text/javascript" src="{% static 'js/jquery-3.1.1.min.js'  %}"></script>
+    <script type="text/javascript" src="{% static 'slick/slick.min.js' %}"></script>
     {% block scripts %}{% endblock %}
     <script type="text/javascript">
         function drawFeed(json){
@@ -99,10 +94,12 @@
 
         function showModal(m){
             $(m).fadeIn();
+            $("[role=modal]").addClass("active");
         }
 
         function hideModal(){
             $(".modal").fadeOut();
+            $("[role=modal]").removeClass("active");
         }
     {% block backscriptbody %}{% endblock %}
         $('document').ready(function(){
@@ -113,6 +110,15 @@
                 return false;
             });
             
+            $(".header-carousel").slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            dots:false,
+            arrows:false,
+            infinite: true,
+            autoplay:true,
+            });
+
             $("[role=modal]").click(function(){
                 showModal($(this).data("target"));
             });

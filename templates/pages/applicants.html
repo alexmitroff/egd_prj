@@ -1,6 +1,9 @@
 {% extends 'base/base.html' %}
 {% load i18n %}
 {% block title %}{% trans 'Абитуриентам' %} | {% endblock %}
+{% block top-carousel %}
+            {% include "include/top-carousel.html" %}
+{% endblock %}
 {% block content %}
 <div class="page-title">
     <h1>{% trans 'Абитуриентам' %}</h1>

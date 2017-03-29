@@ -1,6 +1,9 @@
 {% extends 'base/base.html' %}
-{% load i18n %}
+{% load i18n staticfiles %}
 {% block title %}{{ degree.name_ru }} | {% endblock %}
+{% block top-carousel %}
+            {% include "include/top-carousel.html" %}
+{% endblock %}
 {% block content %}
 <div class="page-title">
     <h1>{{ degree.name_ru }}</h1>

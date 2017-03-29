@@ -1,6 +1,11 @@
 {% extends 'base/base.html' %}
-{% load i18n %}
+{% load i18n staticfiles %}
 {% block title %}{{flatpage.title}} | {% endblock %}
+
+{% block top-carousel %}
+            {% include "include/top-carousel.html" %}
+{% endblock %}
+
 {% block content %}
     <div class="flatcontent">{{flatpage.content}}</div>
 {% endblock %}
