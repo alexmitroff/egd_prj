@@ -329,3 +329,39 @@ class Document(models.Model):
         ordering = ['pos']
     def __str__(self):
         return self.name_ru
+
+def lab_image_location(instance, filename):
+    filename = filename.replace(" ","")
+    if len(filename) > 100:
+        filename = filename[:99]
+    return 'lab/{0}/{1}'.format(instance.slug, filename)
+
+class Lab(models.Model):
+    pos = models.IntegerField(_('Position'),default=0)
+    show = models.BooleanField(_('Show'), default=True)
+    slug = models.CharField( _('URL'), max_length = 140,
+            help_text=_("it will shows up in address area"), default='slug')
+    name_en = models.CharField( _("Name in english"), max_length = 140,
+            help_text=_("Name in english"), blank=True, null=True)
+    content_en = models.TextField(_('Content in english'),blank=True,
+            null=True, help_text=_("use HTML for better result"))
+    name_ru = models.CharField( _("Name in russian"), max_length = 140,
+            help_text=_("Name in russian"), blank=True, null=True)
+    content_ru = models.TextField(_('Content in russian'),blank=True,
+            null=True, help_text=_("use HTML for better result"))
+    cover = models.ImageField(_('image'),upload_to=lab_image_location,
+            help_text='cover image', blank=True, null=True)
+    def save(self, *args, **kwargs):
+        try:
+            this = Lab.objects.get(id=self.id)
+            if this.cover != self.cover:
+                this.cover.delete(save=False)
+        except:
+            pass
+        super().save(*args, **kwargs)
+    class Meta:
+        verbose_name = _("Lab")
+        verbose_name_plural = _("Labs")
+        ordering = ['pos']
+    def __str__(self):
+        return self.name_ru
