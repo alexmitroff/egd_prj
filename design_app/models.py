@@ -242,6 +242,12 @@ class Tag(models.Model):
     def __str__(self):
         return self.word
 
+def unit_image_location(instance, filename):
+    filename = filename.replace(" ","")
+    if len(filename) > 100:
+        filename = filename[:99]
+    return 'units/{0}/images/{1}'.format(instance.slug, filename)
+
 class Unit(models.Model):
     """
     Some additional info like exams or so..
@@ -249,6 +255,8 @@ class Unit(models.Model):
     pos = models.IntegerField(_('Position'),default=0)
     show = models.BooleanField(_('Show'), default=True)
     tag = models.ManyToManyField(Tag,related_name='units')
+    slug = models.CharField( _('URL'), max_length = 140,
+            help_text=_("it will shows up in address area"), default='slug')
     ## --- en locale
     name_en = models.CharField( _("Name in english"), max_length = 140,
             help_text=_("Name in english"), blank=True, null=True)
@@ -259,6 +267,18 @@ class Unit(models.Model):
             help_text=_("Name in russian"), blank=True, null=True)
     content_ru = models.TextField(_('Content in russian'),blank=True,
             null=True, help_text=_("use HTML for better result"))
+    pic = models.ImageField(_('image'),upload_to=unit_image_location,
+            help_text='image', blank=True, null=True)
+    
+    def save(self, *args, **kwargs):
+        try:
+            this = Unit.objects.get(id=self.id)
+            if this.pic != self.pic:
+                this.pic.delete(save=False)
+        except:
+            pass
+        super().save(*args, **kwargs)
+    
     class Meta:
         verbose_name = _("Unit")
         verbose_name_plural = _("Units")

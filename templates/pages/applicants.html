@@ -9,29 +9,20 @@
     <h1>{% trans 'Абитуриентам' %}</h1>
 </div>
 <div class="flex-block">
-    {% for degree in degrees %}
+    {% for unit in units %}
     <div class="flex-card">
         <div class="title-pic-place">
-            <a href="{% url 'degree' degree.slug %}"><div class="title-pic" style="background-image:url({{ degree.pic.url }})"></div></a>
+            <a href="#!"><div class="title-pic" style="background-image:url()"></div></a>
         </div>
         <div class="title-title">    
-            <h3>{{degree.name_ru}}</h3>
+            <h3>{{unit.name_ru}}</h3>
         </div>
         <div class="title-content">    
-            <p>{{degree.content_ru}}</p>
+            <p>{{unit.content_ru}}</p>
         </div>
         <div class="title-actions">
-            <p><a href="{% url 'degree' degree.slug %}" class="btn btn-white">{% trans 'Подробнее' %}</a></p>
+            <p><a href="#!" class="btn btn-white">{% trans 'Подробнее' %}</a></p>
         </div>
-    </div>
-    {% empty %}
-    {% endfor %}
-</div>
-<div class="units">
-    {% for unit in units %}
-    <h2>{{unit.name_ru}}</h2>
-    <div>
-    {{unit.content_ru|safe}}
     </div>
     {% empty %}
     {% endfor %}

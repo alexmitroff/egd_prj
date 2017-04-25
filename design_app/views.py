@@ -48,8 +48,7 @@ def applicants(request):
     template = 'pages/applicants.html'
     degrees = Degree.objects.filter(show=True)
     units = Unit.objects.filter(tag__word='apply')
-    var = {'degrees':degrees,
-           'units':units}
+    var = {'units':units}
     return render(request, template, var)
 
 def degree(request, d_slug):
