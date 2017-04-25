@@ -55,6 +55,7 @@ urlpatterns += i18n_patterns(
     url(r'^applicants/$', views.applicants, name='applicants'),
     url(r'^applicants/(?P<d_slug>.*)/(?P<p_slug>.*)/$', views.programm, name='programm'),
     url(r'^applicants/(?P<d_slug>.*)/$', views.degree, name='degree'),
+    url(r'^labs/$', views.labs, name='labs'),
     )
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

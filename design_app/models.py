@@ -363,10 +363,14 @@ class Lab(models.Model):
             help_text=_("it will shows up in address area"), default='slug')
     name_en = models.CharField( _("Name in english"), max_length = 140,
             help_text=_("Name in english"), blank=True, null=True)
+    short_en = models.CharField( _("description"), max_length = 140,
+            help_text=_("Shord desription in english"), blank=True, null=True)
     content_en = models.TextField(_('Content in english'),blank=True,
             null=True, help_text=_("use HTML for better result"))
     name_ru = models.CharField( _("Name in russian"), max_length = 140,
             help_text=_("Name in russian"), blank=True, null=True)
+    short_ru = models.CharField( _("description"), max_length = 140,
+            help_text=_("Shord desription in russian"), blank=True, null=True)
     content_ru = models.TextField(_('Content in russian'),blank=True,
             null=True, help_text=_("use HTML for better result"))
     cover = models.ImageField(_('image'),upload_to=lab_image_location,

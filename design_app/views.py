@@ -46,7 +46,6 @@ def feed(request):
 
 def applicants(request):
     template = 'pages/applicants.html'
-    degrees = Degree.objects.filter(show=True)
     units = Unit.objects.filter(tag__word='apply')
     var = {'units':units}
     return render(request, template, var)
@@ -77,4 +76,11 @@ def programm(request,d_slug, p_slug):
             'programm':programm,
             'apply':apply_url,
             'images':images}
+    return render(request, template, var)
+
+def labs(request):
+    template = 'pages/labs.html'
+    degrees = Degree.objects.filter(show=True)
+    labs = Lab.objects.filter(show=True)
+    var = {'labs':labs}
     return render(request, template, var)

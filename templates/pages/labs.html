@@ -1,0 +1,33 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Абитуриентам' %} | {% endblock %}
+{% block top-carousel %}
+            {% include "include/top-carousel.html" %}
+{% endblock %}
+{% block content %}
+<div class="page-title">
+    <h1>{% trans 'Лаборатории' %}</h1>
+</div>
+<div class="flex-block">
+    {% for lab in labs %}
+    <div class="flex-card">
+        <div class="title-pic-place">
+            <a href="#!"><div class="title-pic" style="background-image:url()"></div></a>
+        </div>
+        <div class="title-title">    
+            <h3>{{lab.name_ru}}</h3>
+        </div>
+        <div class="title-content">    
+            <p>{{lab.content_ru}}</p>
+        </div>
+        <div class="title-actions">
+            <p><a href="#!" class="btn btn-white">{% trans 'Подробнее' %}</a></p>
+        </div>
+    </div>
+    {% empty %}
+    {% endfor %}
+</div>
+{% endblock %}
+{% block templates %}{% endblock %}
+{% block scripts %}{% endblock %}
+{% block docready %}{% endblock %}
