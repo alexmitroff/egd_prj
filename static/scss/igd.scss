@@ -106,9 +106,10 @@ body{
                 justify-content:flex-end;
                 align-items:center;
                 > div {
+                    width:100%;
                     border-radius:.1rem;
                     padding:1rem;
-                    background-color:rgba(255,255,255,.75);
+                    background-color:rgba(255,255,255,.85);
                 }
             }
         }
@@ -752,6 +753,18 @@ $bropborder: .2rem solid #ccc;
     
     #egd-big{display:block;}
     #egd-small{display:none;}
+    
+    .header-egd{
+        .header-carousel{
+            .header-carousel-item{
+                .carousel-content{
+                    > div {
+                        max-width:50%;
+                    }
+                }
+            }
+        }
+    }
 }
 
 @media (min-width:$min-tabletv) and (max-width:$max-tabletv) {
@@ -800,6 +813,9 @@ $bropborder: .2rem solid #ccc;
                 .carousel-content{
                     width:$container-desktop;
                     margin:0 auto;
+                    > div {
+                        max-width:30%;
+                    }
                 }
             }
         }

@@ -11,6 +11,9 @@ import json
 
 # Create your views here.
 
+def get_news():
+    return NewsItem.objects.filter(featured = True)
+
 def index(request):
     template = 'pages/index.html'
     var = {}
@@ -19,7 +22,11 @@ def index(request):
 def news(request):
     template = 'pages/news.html'
     categories = NewsCategory.objects.all()
-    var = {'categories':categories}
+    carousel = get_news()
+    var = {
+            'categories':categories,
+            'carousel':carousel,
+            }
     return render(request, template, var)
 
 def fix_date(d):
