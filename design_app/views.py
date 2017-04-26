@@ -29,6 +29,16 @@ def news(request):
             }
     return render(request, template, var)
 
+def article(request, article_id):
+    template = 'pages/article.html'
+    article = NewsItem.objects.filter(id=article_id)
+    var = {
+            'article':article[0],
+            'carousel':article,
+            }
+    return render(request, template, var)
+
+
 def fix_date(d):
     return d.strftime('%d.%m.%Y')
 
@@ -36,19 +46,18 @@ def feed(request):
     l = request.LANGUAGE_CODE
     if 'category' in request.GET:
         news = NewsItem.objects.filter(publish=True, 
-                category=request.GET['category'])
+                category=request.GET['category']).order_by('-created')
     else:
-        news = NewsItem.objects.filter(publish=True)
+        news = NewsItem.objects.filter(publish=True).order_by('-created')
 
     if l == 'ru':
         data = [{'date':fix_date(item.created),'color':item.category.color,
             'category':item.category.name_ru,'title': item.title_ru, 
-            'short': item.content_ru} for item in news]
+            'short': item.short_ru, 'id':item.id} for item in news]
     else:
         data = [{'date':fix_date(item.created),'color':item.category.color,
             'category':item.category.name_en,'title': item.title_en, 
-            'short': item.content_en} for item in news]
-
+            'short': item.short_en, 'id':item.id} for item in news]
     return JsonResponse(data, safe=False)
 
 def applicants(request):

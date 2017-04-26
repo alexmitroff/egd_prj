@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+{% load i18n staticfiles %}
+{% block title %}{{lab.name_ru}} | {% endblock %}
+
+{% block top-carousel %}
+            {% include "include/img-carousel.html" %}
+{% endblock %}
+
+{% block content %}
+    <article class="flatcontent">
+        <header>
+            <h1>{{article.title_ru}}</h1>    
+        </header>
+        <main>
+            {{article.content_ru|safe}}
+        </main>
+        <footer></footer>
+    </article>
+{% endblock %}
+{% block templates %}{% endblock %}
+{% block scripts %}{% endblock %}
+{% block docready %}
+{% endblock %}

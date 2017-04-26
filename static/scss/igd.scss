@@ -126,26 +126,28 @@ body{
 }
 
 
-header,
-main {
+body > header,
+body > main {
 	display:flex;
 	justify-content: center;
 }
 
-header{
+body > header{
     flex-direction:column;
 }
 
-main{
+body > main{
 	flex-grow: 1;
     padding:1rem 0;
 }
 
-header, main, footer {
+body > header, 
+body > main, 
+body > footer {
 	width:100%;
 	}
 
-footer{
+body > footer{
     padding-top:1rem;
     background-color:$menuactive;
     min-height:10rem;

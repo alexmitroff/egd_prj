@@ -435,8 +435,8 @@ class Lab(models.Model):
     def save(self, *args, **kwargs):
         try:
             this = Lab.objects.get(id=self.id)
-            if this.cover != self.cover:
-                this.cover.delete(save=False)
+            if this.pic != self.pic:
+                this.pic.delete(save=False)
         except:
             pass
         super().save(*args, **kwargs)

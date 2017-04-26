@@ -52,6 +52,8 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     url(r'^$', views.news, name='news'),
+    url(r'^news/$', views.news, name='news'),
+    url(r'^news/(?P<article_id>\d+)/$', views.article, name='article'),
     url(r'^applicants/$', views.applicants, name='applicants'),
     url(r'^applicants/(?P<d_slug>.*)/(?P<p_slug>.*)/$', views.programm, name='programm'),
     url(r'^applicants/(?P<d_slug>.*)/$', views.degree, name='degree'),
