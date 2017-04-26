@@ -24,26 +24,56 @@ class NewsCategory(models.Model):
     def __str__(self):
         return self.name_ru
 
+def newsitem_image_location(instance, filename):
+    filename = filename.replace(" ","")
+    if len(filename) > 100:
+        filename = filename[:99]
+    return 'news/titles/{0}'.format(filename)
+
 class NewsItem(models.Model):
     category = models.ForeignKey(NewsCategory, default = 0)	
     ## --- en locale
     title_en = models.CharField( _("Title in english"), max_length = 140,
             help_text=_("Title in english"), blank=True, null=True)
+    short_en = models.CharField( _("Short in english"), max_length = 140,
+            help_text=_("News item preview in english"), blank=True, null=True)
     content_en = models.TextField(_('Content in english'),blank=True,
             null=True, help_text=_("use HTML for better result"))
     ## --- ru locale
     title_ru = models.CharField( _("Title in russian"), max_length = 140,
             help_text=_("Title in russian"), blank=True, null=True)
+    short_ru = models.CharField( _("Short in russian"), max_length = 140,
+            help_text=_("Shord desription in russian"), blank=True, null=True)
     content_ru = models.TextField(_('Content in russian'),blank=True,
             null=True, help_text=_("use HTML for better result"))
     ## --- additional
+    pic = models.ImageField('image',upload_to=newsitem_image_location,
+            help_text=_('Title image'), blank=True, null=True)
+    
     created = models.DateTimeField(_("Created"), auto_now_add=True)
     modified = models.DateTimeField(_("Modified"),auto_now=True)
     publish = models.BooleanField(_("Published"), default = True) 
+    featured = models.BooleanField(_("Carousel"), default = False) 
+    
+    def save(self, *args, **kwargs):
+        try:
+            this = NewsItem.objects.get(id=self.id)
+            if this.pic != self.pic:
+                this.pic.delete(save=False)
+        except:
+            pass
+        super().save(*args, **kwargs)
+    
+    @property
+    def pic_url(self):
+        if self.pic and hasattr(self.pic, 'url'):
+            return self.pic.url
+    
     class Meta:
         verbose_name = _("News item")
         verbose_name_plural = _("News items")
         ordering = ["created"]
+    
     def __str__(self):
         return self.title_ru
 
