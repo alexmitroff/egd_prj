@@ -76,6 +76,12 @@ class Degree(models.Model):
         except:
             pass
         super().save(*args, **kwargs)
+    
+    @property
+    def pic_url(self):
+        if self.pic and hasattr(self.pic, 'url'):
+            return self.pic.url
+    
     class Meta:
         verbose_name = _("Degree")
         verbose_name_plural = _("Degrees")
@@ -113,6 +119,12 @@ class Rubric(models.Model):
         except:
             pass
         super().save(*args, **kwargs)
+    
+    @property
+    def pic_url(self):
+        if self.pic and hasattr(self.pic, 'url'):
+            return self.pic.url
+    
     class Meta:
         verbose_name = _("Degree rubric")
         verbose_name_plural = _("Degree rubrics")
@@ -192,6 +204,11 @@ class Programm(models.Model):
             pass
         super().save(*args, **kwargs)
     
+    @property
+    def pic_url(self):
+        if self.pic and hasattr(self.pic, 'url'):
+            return self.pic.url
+
     class Meta:
         verbose_name = _("Programm")
         verbose_name_plural = _("Programmes")
@@ -225,6 +242,11 @@ class ProgrammImage(models.Model):
             pass
         super().save(*args, **kwargs)
     
+    @property
+    def pic_url(self):
+        if self.pic and hasattr(self.pic, 'url'):
+            return self.pic.url
+
     class Meta:
         verbose_name = _("Programm image")
         verbose_name_plural = _("Programm images")
@@ -278,6 +300,11 @@ class Unit(models.Model):
         except:
             pass
         super().save(*args, **kwargs)
+    
+    @property
+    def pic_url(self):
+        if self.pic and hasattr(self.pic, 'url'):
+            return self.pic.url
     
     class Meta:
         verbose_name = _("Unit")
@@ -373,7 +400,7 @@ class Lab(models.Model):
             help_text=_("Shord desription in russian"), blank=True, null=True)
     content_ru = models.TextField(_('Content in russian'),blank=True,
             null=True, help_text=_("use HTML for better result"))
-    cover = models.ImageField(_('image'),upload_to=lab_image_location,
+    pic = models.ImageField(_('image'),upload_to=lab_image_location,
             help_text='cover image', blank=True, null=True)
     def save(self, *args, **kwargs):
         try:
@@ -383,6 +410,12 @@ class Lab(models.Model):
         except:
             pass
         super().save(*args, **kwargs)
+
+    @property
+    def pic_url(self):
+        if self.pic and hasattr(self.pic, 'url'):
+            return self.pic.url
+
     class Meta:
         verbose_name = _("Lab")
         verbose_name_plural = _("Labs")

@@ -55,13 +55,12 @@ def degree(request, d_slug):
     degree = get_object_or_404(Degree, slug=d_slug)
     programmes = Programm.objects.filter(show=True, degree=degree.id)
     form0 = programmes.filter(form=0)
-    form1 = programmes.filter(form=1)
-    form2 = programmes.filter(form=2)
+    #form1 = programmes.filter(form=1)
+    #form2 = programmes.filter(form=2)
     var = { 
             'degree':degree,
             'form0':form0,
-            'form1':form1,
-            'form2':form2,
+            'carousel':form0,
             }
     return render(request, template, var)
 
@@ -82,5 +81,15 @@ def labs(request):
     template = 'pages/labs.html'
     degrees = Degree.objects.filter(show=True)
     labs = Lab.objects.filter(show=True)
-    var = {'labs':labs}
+    var = {'labs':labs,
+            'carousel':labs}
+    return render(request, template, var)
+
+def lab(request,l_slug):
+    template = 'pages/lab.html'
+    lab = Lab.objects.filter(slug=l_slug)
+    var = {
+            'lab':lab[0],
+            'carousel':lab,
+        }
     return render(request, template, var)

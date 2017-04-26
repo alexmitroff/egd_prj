@@ -1,0 +1,10 @@
+{% load staticfiles %}
+
+<div class="header-carousel">
+    {% for pic in carousel %}
+    <div class="header-carousel-item" style="background-image:url({{ pic.pic_url|default_if_none:'#' }})"></div>
+    {% empty %}
+    <div class="header-carousel-item" style="background-image:url({% static 'img/carousel/01.jpg' %})"> </div>
+    {% endfor %}
+</div>    
+

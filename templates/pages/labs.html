@@ -2,7 +2,7 @@
 {% load i18n %}
 {% block title %}{% trans 'Абитуриентам' %} | {% endblock %}
 {% block top-carousel %}
-            {% include "include/top-carousel.html" %}
+            {% include "include/img-carousel.html" %}
 {% endblock %}
 {% block content %}
 <div class="page-title">
@@ -12,16 +12,16 @@
     {% for lab in labs %}
     <div class="flex-card">
         <div class="title-pic-place">
-            <a href="#!"><div class="title-pic" style="background-image:url()"></div></a>
+            <a href="{% url 'lab' lab.slug %}"><div class="title-pic" style="background-image:url({{ lab.pic_url|default_if_none:'#' }})"></div></a>
         </div>
         <div class="title-title">    
             <h3>{{lab.name_ru}}</h3>
         </div>
         <div class="title-content">    
-            <p>{{lab.content_ru}}</p>
+            <p>{{lab.short_ru}}</p>
         </div>
         <div class="title-actions">
-            <p><a href="#!" class="btn btn-white">{% trans 'Подробнее' %}</a></p>
+            <p><a href="{% url 'lab' lab.slug %}" class="btn btn-white">{% trans 'Подробнее' %}</a></p>
         </div>
     </div>
     {% empty %}
