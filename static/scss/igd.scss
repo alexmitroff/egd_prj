@@ -87,21 +87,23 @@ body{
     }
 }
 
+$carousel-height: 29vw;
+
 .header-egd{
-    height:60vh;
+    min-height:$carousel-height;
     background-repeat:no-repeat;
     background-size:cover;
     background-position:center;
     .header-carousel{
             width:100%;
         .header-carousel-item{
-            height:60vh;
+            min-height:$carousel-height;
             background-repeat:no-repeat;
             background-size:cover;
             background-position:center;
             .carousel-content{
                 width:100%;
-                height:100%;
+                min-height:$carousel-height;
                 display:flex;
                 justify-content:flex-end;
                 align-items:center;
@@ -368,7 +370,7 @@ header{
         display:flex;
 		padding: 1rem;
 		flex-wrap:wrap;
-		justify-content:space-between;
+		justify-content:flex-start;
         box-sizing: border-box;
 		.feed-item{
 			width:100%;
@@ -454,7 +456,7 @@ $flexborder: .5rem solid #fff;
 .flex-block{
     display:flex;
     flex-wrap:wrap;
-    justify-content:space-around;
+    justify-content:flex-start;
     .flex-card{
         margin-bottom:1rem;
         width:100%;
@@ -707,13 +709,15 @@ $bropborder: .2rem solid #ccc;
 @media (min-width:$min-mobileh) and (max-width:$max-mobileh) {
     .flex-block{
         .flex-card{
-            width:49%
+            width:48%;
+            margin:0 1%
         }
     }
     .news{
         .feed{
             .feed-item{
-                width:45%;
+                width:43%;
+                margin:0 1%;
             }
         }
     }
@@ -735,7 +739,8 @@ $bropborder: .2rem solid #ccc;
     .news{
         .feed{
             .feed-item{
-                width:30%;
+                width:29%;
+                margin:0 1%;
             }
         }
     }
@@ -772,7 +777,8 @@ $bropborder: .2rem solid #ccc;
 @media (min-width:$min-tabletv) and (max-width:$max-tabletv) {
     .flex-block{
         .flex-card{
-            width:32%
+            width:31%;
+            margin:0 1%;
         }
     }
 }
@@ -780,7 +786,8 @@ $bropborder: .2rem solid #ccc;
 @media (min-width:$min-tableth) and (max-width:$max-tableth) {
     .flex-block{
         .flex-card{
-            width:24%
+            width:23%;
+            margin:0 1%;
         }
     }
 }
@@ -788,7 +795,8 @@ $bropborder: .2rem solid #ccc;
 @media (min-width:$min-desktop) {
     .flex-block{
         .flex-card{
-            width:24%
+            width:23%;
+            margin:0 1%;
         }
     }
     .header-poly{

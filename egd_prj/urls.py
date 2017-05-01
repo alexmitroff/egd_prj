@@ -28,6 +28,7 @@ ru_flat = [
     url(r'laboratories/$', fp_views.flatpage, {'url': '/ru/laboratories/'}, name='laboratories_ru'),
     url(r'applications/bachelor/$', fp_views.flatpage, {'url': '/ru/applications/bachelor/'}, name='app_bach_ru'),
     url(r'applications/masters/$', fp_views.flatpage, {'url': '/ru/applications/masters/'}, name='app_mast_ru'),
+    url(r'applications/postgraduate/$', fp_views.flatpage, {'url': '/ru/applications/postgraduate/'}, name='app_post_ru'),
         ]
 
 en_flat = [
@@ -39,6 +40,7 @@ en_flat = [
     url(r'laboratories/$', fp_views.flatpage, {'url': '/en/laboratories/'}, name='laboratories_en'),
     url(r'applications/bachelor/$', fp_views.flatpage, {'url': '/en/applications/bachelor/'}, name='app_bach_en'),
     url(r'applications/masters/$', fp_views.flatpage, {'url': '/en/applications/masters/'}, name='app_mast_en'),
+    url(r'applications/postgraduate/$', fp_views.flatpage, {'url': '/en/applications/postgraduate/'}, name='app_post_en'),
         ]
 
 urlpatterns = [
