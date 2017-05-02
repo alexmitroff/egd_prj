@@ -32,6 +32,9 @@
                     </div>
                     <div class="mobile-menu" role="modal" data-target="#m-menu">
                     </div>
+            </div>
+            <div class="content">
+                {% include "include/rubric-menu.html" %}
             </div>    
         </div>
         <div id="header-pic" class="header-egd">
@@ -40,7 +43,6 @@
 	</header>
 	<main>
 		<div class="container">
-            <div class="menu">{% include "include/menu.html" %}</div>
             <div class="content">{% block content %}{% endblock %}</div>
 		</div>
 	</main>
