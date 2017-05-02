@@ -1,8 +1,8 @@
 {% load staticfiles %}
 
-<div class="header-carousel">
+<div class="carousel">
     {% for pic in carousel %}
-    <div class="header-carousel-item" style="background-image:url({{ pic.pic_url|default_if_none:'#' }})">
+    <div class="carousel-item" style="background-image:url({{ pic.pic_url|default_if_none:'#' }})">
         <div class="carousel-content">
             <div>
                 <h2>{{pic.title_ru}}</h2>
@@ -11,7 +11,7 @@
         </div>
     </div>
     {% empty %}
-    <div class="header-carousel-item" style="background-image:url({% static 'img/carousel/01.jpg' %})"> </div>
+    <div class="carousel-item" style="background-image:url({% static 'img/carousel/01.jpg' %})"> </div>
     {% endfor %}
 </div>    
 

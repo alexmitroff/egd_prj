@@ -37,11 +37,11 @@
                 {% include "include/rubric-menu.html" %}
             </div>    
         </div>
-        <div id="header-pic" class="header-egd">
-            {% block top-carousel %}{% endblock %}
-        </div>    
 	</header>
 	<main>
+        <div id="header-pic" class="carousel-top">
+            {% block top-carousel %}{% endblock %}
+        </div>    
 		<div class="container">
             <div class="content">{% block content %}{% endblock %}</div>
 		</div>
@@ -106,13 +106,17 @@
     {% block backscriptbody %}{% endblock %}
         $('document').ready(function(){
             {% block docready %}{% endblock %}
+
+            $(".rubric-header").click(function (){
+                $(".rubric-content").toggleClass("active");
+            });
             
             $(".modal .modal-wrapper").children()[0].click(function(e){
                 e.stopPropagation();
                 return false;
             });
             
-            $(".header-carousel").slick({
+            $(".carousel").slick({
             slidesToShow: 1,
             slidesToScroll: 1,
             dots:false,
